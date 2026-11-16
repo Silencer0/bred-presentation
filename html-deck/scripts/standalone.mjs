@@ -1,0 +1,14 @@
+import {createRequire} from 'node:module';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+const require=createRequire(import.meta.url);
+const esbuild=require('esbuild');
+const aliases={'react':resolve('public/vendor/react.mjs'),'react/jsx-runtime':resolve('public/vendor/jsx-runtime.mjs'),'react-dom/client':resolve('public/vendor/react-dom-client.mjs'),'motion/react':resolve('public/vendor/motion-react.mjs')};
+const result=await esbuild.build({entryPoints:['dist/src/main.js'],bundle:true,write:false,format:'iife',target:'es2018',minify:true,plugins:[{name:'local-libraries',setup(build){build.onResolve({filter:/^(react|react-dom|motion)(\/.*)?$/},args=>({path:aliases[args.path]}));}}]});
+let css=readFileSync('src/style.css','utf8')+'\n'+readFileSync('src/anatomy.css','utf8');
+css=css.replace(/url\('\/fonts\/([^']+)'\)/g,(_,name)=>`url(data:font/ttf;base64,${readFileSync('public/fonts/'+name).toString('base64')})`);
+const script=[readFileSync('public/vendor/gsap.min.js','utf8'),readFileSync('public/vendor/lenis.min.js','utf8'),result.outputFiles[0].text].join('\n;\n').replace(/<\/script/gi,'<\\/script');
+let html=readFileSync('index.html','utf8').replace(/<link rel="stylesheet"[^>]+>/g,'').replace(/<script[^>]*>[\s\S]*?<\/script>/g,'');
+html=html.replace('</head>',()=>`<style>${css}</style></head>`).replace('</body>',()=>`<script>${script}</script></body>`);
+writeFileSync('dist/presentation.html',html);writeFileSync('presentation.html',html);
+console.log(`Standalone presentation.html: ${(Buffer.byteLength(html)/1024/1024).toFixed(2)} MB; all scripts, drawings and fonts embedded.`);
