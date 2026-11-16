@@ -8,7 +8,8 @@
     "build": "node scripts/build.mjs",
     "preview": "node scripts/serve.mjs",
     "standalone": "node scripts/build.mjs && node scripts/standalone.mjs",
-    "check": "node scripts/check-updated.cjs"
+    "check": "node scripts/review-content.cjs",
+    "art": "node scripts/build-research-art.mjs"
   },
   "description": "Offline-ready React research presentation with self-hosted GSAP, Lenis, Motion and React Bits.",
   "devDependencies": {

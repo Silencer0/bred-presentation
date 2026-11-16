@@ -1,6 +1,6 @@
 # Cash vs UPI — Intern Purchase Recall
 
-12 slides, timed to 10 minutes. Based on **Cash vs UPI Recall: Intern Field Experiment Design**, 16 November 2026, with the user's single-college scope superseding the PDF's two-college design.
+15 slides, timed to 10 minutes. Based on **Cash vs UPI Recall: Intern Field Experiment Design**, 16 November 2026, with the user's single-college scope superseding the PDF's two-college design.
 
 ## Open directly
 
@@ -33,4 +33,4 @@ For browser checks, run `npx playwright install firefox`, then `npm run check`. 
 
 ## Study scope
 
-One college; summer interns in teams of at least three; paired team-level randomization; own-money purchases with a 25% discount during Monday–Sunday Food Week; surprise recall on Tuesday at 6 pm. The target of about 350 interns / 58 teams is approximate and conditional on cohort capacity and pilot-validated power. Sample-size scenarios are calculated planning examples, not observed results.
+One college; adult newcomers; voluntary convenience recruitment; baseline memory/spending matching and individual randomization within pairs. Personal money, no discount, and equal completion rewards for both payment conditions. All campus vendors must be partnered for independent cash and UPI logging across one Monday–Sunday week. Tuesday recall follows. The recall task and outcome metrics remain pending.

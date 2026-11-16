@@ -1,6 +1,6 @@
 # Cash vs UPI purchase recall
 
-A 12-slide, 10-minute presentation for Behavioral Research and Experiment Design. The active study uses one college.
+A 15-slide, 10-minute presentation for Behavioral Research and Experiment Design. The active study uses one college.
 
 Download and open [presentation.html](html-deck/presentation.html) in a current browser. All fonts, artwork, and scripts are embedded, so it works offline. GitHub shows the source; download the file to run it.
 

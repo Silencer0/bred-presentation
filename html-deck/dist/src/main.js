@@ -1,32 +1,12 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { createRoot } from 'react-dom/client';
 import { AnimatePresence, motion } from 'motion/react';
-import CountUp from './components/CountUp.js';
-import { Wallet, Phone, Pencil, Card } from './components/Drawings.js';
-import { printerSvg } from './printer-art.js';
+import { researchArt } from './research-art.js';
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
-const titles = ['Cash, UPI & purchase recall', 'Why spending recall matters', 'What the literature leaves open', 'Two competing predictions', 'Randomize intern teams', 'One college. Two payment modes.', 'Seven days of spending. Tuesday recall.', 'Remembering a purchase', 'The supporting measures', 'Sample size & analysis', 'The limits of the design', 'What either outcome would mean'];
-const chapters = ['Introduction', 'Motivation', 'Literature & gap', 'Question & hypotheses', 'Experimental design', 'Conditions', 'Procedure', 'Primary outcome', 'Secondary outcomes', 'Analysis plan', 'Limitations & ethics', 'Implications'];
-const timings = [20, 40, 60, 60, 60, 55, 65, 60, 40, 50, 45, 45];
-const notes = ["We ask whether cash versus UPI changes delayed recall of everyday purchases among summer interns at one host college. This is a proposed pair-matched, cluster-randomized field experiment. The team, not the individual, is assigned to a payment mode. The experiment is scoped to one host college.", "Interns are newcomers to the campus and its outlets, so long-established price knowledge is less likely to drive total reconstruction. Cash handling may make payment salient; UPI histories and notifications may rehearse purchases. These are competing predictions. By internship week 3, orientation novelty should be lower while participants are still relatively new to outlet prices.", "Soman links payment rehearsal and immediacy to recall and later spending. Gafeeva and colleagues find lower accuracy for recent card payments than cash; this does not establish an effect for UPI. Srivastava and Raghubir examine decomposition of expense estimates. Our narrow gap is delayed UPI purchase recall checked against independent outlet records. Do not claim that no related experiment exists anywhere.", "H1 is two-sided: purchase recall rates differ between cash and UPI. H0 is no difference. Cash salience predicts a cash advantage; UPI records and notifications predict a UPI advantage. H2 concerns absolute total-estimation error. H3 separately predicts more negative signed estimation error among UPI users. Cue gain and possible mechanisms are exploratory, not additional confirmatory hypotheses.", "Invite all summer interns at the host college using an independent recruiter, not their supervisor. Eligible participants are 18 or older, new to the campus, use cash and UPI, and belong to a lab or project team of at least three interns. There is no minimum habitual cash-share threshold. Match teams on mean purchase-memory score, Spendthrift–Tightwad score, habitual cash share, size, work type and outlet distance. Conceal allocation until both teams in each pair are enrolled, then randomize one to each mode. Whole-team assignment reduces within-team mixing, not all cross-team contact. One college means no college block or mode-by-college interaction.", "Participants use their own money. There is no ₹500 task payment and no separate pot. Both arms receive 25% off their personal orders at partner outlets when using their assigned mode and discount card. Cash teams can send UPI to the daily conversion desk and receive the same amount in small notes and coins. Record conversion amounts, IDs and timestamps. UPI teams use the Food Week QR. Other purchases are unrestricted; anyone can use another mode without the discount. Histories and notifications remain part of real UPI.", "Internship weeks 1–2: consent, online lifestyle survey and a 20-minute purchase-memory task. End of week 2: pair teams and randomize. Sunday kickoff: discount cards, outlet list, assigned-mode instructions, and the cash-conversion desk. Week 3 Monday–Sunday: personal purchases are logged by outlets, with daily reconciliation and audit purchases; group orders are flagged. Week 4 Tuesday at 6 pm: surprise recall in parallel rooms at the host college. Phones are collected. Fixed order: initial total, purchase count, free purchase list, day-by-day reconstruction, revised total. Print exact study dates and outlet names. Post-recall checking, group-payment and suspicion questions plus Food Week screen-time data follow. Debrief after all sessions finish. Individual purchase delays vary; Tuesday is two days after the final spending day, not two days after every purchase.", "Recall rate is correctly listed logged purchases divided by total logged purchases. Match outlet and item category, allowing ±1 day. Two blind coders report agreement with Cohen’s kappa. Amount within ₹5 is secondary. The five-purchase demonstration is illustrative, not data. A zero-purchase participant has no defined primary recall rate; report non-purchase rates by assigned mode, retain defined estimation and false-recall outcomes, and prespecify selection sensitivity analyses.", "H2 absolute total-estimation error is |log((recalled + 10)/(actual + 10))|. H3 signed estimation error is log((recalled + 10)/(actual + 10)); negative means underestimation. H3 predicts UPI underestimates more. Apply Holm correction across H2 and H3. False recall, count error and amount accuracy are secondary. Cue gain, tightwad score, habitual cash share, UPI app opens, checking and cash-conversion visits are exploratory. Fixed order mixes cueing with anchoring and retesting. App-use metrics depend on what each device reports. Mechanism associations are not causal identification.", "Planning target: about 350 interns in about 58 teams, 29 matched pairs, at the single host college, subject to actual cohort capacity. Approximate planning assumes about six participants per team, ICC .05, alpha .05, 80% power, d=.30 and 20% variance reduction from matching/covariates. The plotted ICC scenarios are calculated from those assumptions: 322 at .03, 350 at .05, and 420 at .10. They are not observed data or validated power for the final logistic model. Pilot the ICC and simulate power; add team pairs if feasible. If the cohort is too small, report the minimum detectable effect or recruit another intake at the same college. Primary intention-to-treat purchase-level logistic mixed model includes mode, team-pair fixed effects, purchase delay and baseline memory, tightwad and cash-share covariates, with participant and team random intercepts. There is no college term or interaction. Report odds ratio and recall-rate contrast with 95% CIs. Do not adjust away post-assignment purchase counts or checking.", "UPI records and the cash-conversion desk can both support reconstruction. The desk is an extra event only cash users experience; record it, do not claim the treatments differ in payment act alone. The 25% discount may change where and how much interns spend. The mode rule is artificial. Scope is one college, newcomers, small in-person purchases and a one-week spending window. Staff and participants see payment mode; coders and analysts can be blinded. Zero purchases, attrition, group orders and fixed cue order remain caveats. Use independent recruitment, explicit assurance the internship is unaffected, ethics approval, consent disclosing purchase logging and temporary withholding of the aim, coded IDs, minimal data, debriefing and data-withdrawal rights. Lee bounds require assumptions such as monotone selection.", "If cash recall is better, replicate and then manipulate UPI notifications, PIN requirements or spending summaries to investigate salience and rehearsal. If UPI recall is better, compare record access versus unaided recall to locate the advantage. Extend beyond this college, to longer delays and other populations. If there is no clear difference, inspect the CI: precise near-zero differs from wide and inconclusive, but nonsignificance does not establish equivalence. Opposing mechanisms are a possible explanation to test, not proof of cancellation."];
+const titles = ["The purchases we remember", "Literature review", "Research gap and question", "Independent and dependent variables", "Baseline testing and matching", "Why recruit newcomers?", "Random allocation", "Payment conditions and rewards", "Independent transaction records", "One-week procedure", "Confounders and safeguards", "Validity and reliability", "Tuesday memory test", "What this experiment tells us", "Limitations and caveats"];
+const timings = [15, 65, 45, 35, 65, 25, 40, 40, 45, 40, 40, 45, 20, 45, 35];
+const notes = ["A field study of payment mode and delayed memory. Both groups receive the same completion reward.", "Payment methods can change how expenses are encoded and reconstructed. Soman \u00b7 2001 Rehearsal and immediacy Writing or actively processing a payment amount and immediate wealth depletion affect how past payments influence later spending. This motivates testing payment-related memory, rather than assuming every digital mode behaves alike. Gafeeva et al. \u00b7 2018 Payment transparency The study examines how multifunctional payment cards can reduce payment transparency. Its card context motivates our question but does not establish a cash-versus-UPI effect. Srivastava & Raghubir \u00b7 2002 Reconstruction of expenses Breaking expense estimates into categories can change memory-based credit-card estimates. Unaided recall and prompted reconstruction should therefore be distinguished. Background: spending decisions depend partly on what previous payments bring to mind. Citations open the original sources.", "Can payment mode change delayed purchase memory in everyday campus spending? The gap Cash versus UPI in the field The cited studies do not settle delayed cash-versus-UPI purchase recall against independently recorded transactions in this setting. Research question Does assigned payment mode affect recall? Compare newcomers randomly assigned to cash or UPI during the same one-week spending period. Hypotheses H0: no difference \u00b7 H1: a difference Use a two-sided hypothesis: physical handling may favor cash, while digital records and notifications may favor UPI. The exact outcome definition will be finalized before data collection. Contribution: a randomized field comparison with vendor records as an independent transaction benchmark.", "One manipulated factor, with two levels. A between-subjects field experiment. Independent variable Assigned payment mode Cash only versus UPI only for eligible campus purchases during the experiment week. Each participant experiences one condition. Dependent variable Delayed purchase-memory performance Tuesday recall compared with the recorded purchases. Exact test, scoring rules and primary metric are pending your specification. Operationalization Assignment is distinct from actual use Record assigned mode, observed transaction mode and deviations separately. One factor with two levels is not a factorial design. Construct: memory for actual purchase episodes, distinguished from estimating an amount using known prices.", "Measure likely sources of imbalance before revealing payment assignments. Memory A neutral delayed-memory task Use standardized instructions, exposure time and delay. Score recall of non-shopping material to avoid rehearsing the later purchase task. Spending habits Prior spending and cash use With consent, use prior UPI history for digital spending and a brief retrospective survey for cash expenditure and cash share. UPI records alone cannot establish cash spending. Masking the objective A broader baseline battery Add short attention, numeracy and lifestyle tasks with equal burden for everyone. Present an ethics-approved broad study aim and ask about hypothesis guessing after recall. Match on baseline memory, mean expenditure and habitual cash share; randomize within pairs. Matching improves balance but does not guarantee equal means.", "Prior price knowledge can blur the distinction between memory and reconstruction. The threat Familiar prices make totals easier to infer A long-term resident may reconstruct expenditure from familiar menu prices without remembering the payment amount. Eligibility restriction New to this college Recruit adult newcomers who can use both cash and UPI. Screen prior campus residence, outlet familiarity and prior visits before allocation. Remaining caveat Newcomers also learn prices Keep the spending window identical and record baseline familiarity. Newcomer status reduces this threat; it does not eliminate it. Internal validity improves through restriction, at the cost of narrower population generalizability.", "Match individual participants, then randomly assign one person in each pair to each mode. Recruitment is voluntary convenience sampling, not random sampling. Conceal allocation until baseline measurement and enrollment are complete.", "Use personal money. No discount. The same reward rule in both conditions. Cash condition Use only cash Use cash for eligible purchases during the seven-day experiment. Vendors record expenditure without asking participants to keep a diary. UPI condition Use only UPI Use UPI for the same eligible purchases and period. Consent-based transaction records are reconciled with vendor logs. Equal incentive Reward completion in both groups The same monetary reward is conditional on completing the assigned-mode task. It is independent of spending amount and memory-test performance; amount and verification rules must be fixed in advance. Define eligible transactions, emergencies and mixed-mode purchases before recruitment. Record deviations without deleting assigned participants from the primary comparison.", "Partner with all campus vendors to record both payment conditions. Vendor logging A common transaction record Record coded participant ID, date/time, vendor, item, amount and payment mode for each purchase. Keep the capture process the same for cash and UPI. Avoid memory rehearsal No participant spending diary Asking cash users to write down purchases would add encoding and rehearsal to that condition. Vendor recording keeps this task out of participants\u2019 routines. Record quality Reconcile and audit daily Check missing IDs, duplicate entries, refunds, split payments and group orders. Reconcile UPI records and vendor totals; audit cash logs against sales records where feasible. All-vendor coverage is a study requirement to arrange, not a partnership already secured. Off-campus cash expenditure remains harder to verify.", "A common exposure period and a common Tuesday recall session. Before the week Consent \u2192 baseline \u2192 match \u2192 randomize Train vendors, pilot record capture and issue coded participant identifiers. Explain logging and assigned-mode requirements without revealing the recall hypothesis. Monday\u2013Sunday Seven days of recorded spending Record cash and UPI purchases for one week only. Apply identical participant contact and compliance procedures to both conditions. Tuesday Recall before records are opened Run the same test at the same time, without phones or transaction histories available during testing. Collect suspicion and compliance checks, then debrief. Tuesday is two days after the final spending day. Earlier purchases have longer recall delays, so retain transaction timestamps.", "Protect the comparison while keeping ordinary purchases as natural as possible. Before assignment Selection and baseline differences Recruit both conditions from the same eligible cohort. Match on prespecified baseline measures and conceal allocation until enrollment and baseline scoring are complete. During spending Unequal treatment and contamination Keep rewards, instructions, logging and contact equal. Record mode switching, shared orders, price changes and cross-group discussion. Digital histories remain a real-world feature of UPI. During recall Experimenter and demand effects Standardize the test environment; mask assessors and coders to assignment where possible. Keep phones aside, avoid leading prompts and debrief after testing. Randomization addresses confounding in expectation. Differential attrition, noncompliance and record gaps can still threaten internal validity.", "Each quality claim needs a concrete check. Construct validity Measure recall, not price familiarity Pilot the memory task and scoring rubric. Compare recalled purchases with independent records; keep recall and total estimation conceptually separate. Reliability Consistent scoring and data capture Use standardized administration and two independent blinded coders for open responses. Report Cohen\u2019s \u03ba for categorical agreement or an appropriate ICC for continuous scores, once scoring is fixed. Internal and external validity Causality has a defined scope Concealed randomization supports causal inference; a voluntary sample at one college limits representativeness. Real purchases improve ecological validity, but enforced payment rules remain artificial. Course links: operationalization, measurement error, demand characteristics, internal validity, construct validity, reliability and external validity.", "Test details and metrics will be finalized next. Fixed already Delayed recall after the spending week All participants take the same Tuesday test under standardized conditions and without consulting transaction histories during the task. Pending your details Task and scoring specification Finalize prompts, response format, time limit, purchase-matching rules, primary outcome and any secondary measures. Do not treat the previous deck\u2019s formulas as decided. Before collection Freeze the scoring and analysis rules Pilot clarity and difficulty; prespecify missing-record handling, zero purchases, exclusions and how noncompliance will be reported. No results are shown. The outcome metric and memory-test procedure are intentionally pending.", "Estimate the effect of assignment to cash or UPI under this study\u2019s conditions. If a difference appears Payment conditions affect delayed recall Interpret the direction and uncertainty against the prespecified hypothesis. A mode effect alone cannot identify whether salience, effort or digital rehearsal caused it. If no clear difference appears Separate precision from absence of evidence Inspect effect sizes and confidence intervals. A wide interval is inconclusive; a nonsignificant result alone does not establish equivalence. Next experiments Test the mechanism and the boundary If supported, replicate and manipulate notification or record access. If unsupported, check measurement quality and adherence, then test longer delays or a more precise design. A later mode \u00d7 record-access experiment could use a factorial design. The present study has one manipulated factor.", "The design narrows uncertainty; it cannot remove every alternative explanation. Generalizability One college and voluntary newcomers Convenience sampling and self-selection limit population validity. Findings may not transfer to residents, other ages, institutions or larger purchases. Ecological validity Required modes and monetary rewards Rewards and a strict payment rule may change spending. Newcomers learn prices; UPI histories and notifications can support rehearsal before the test. Coverage and ethics Missing purchases, spillovers and withholding Off-campus purchases, group payments, attrition and vendor errors remain risks. Use informed consent for logging, minimal financial data, ethics review, debriefing and withdrawal rights. Extend to other cohorts and campuses, longer spending windows and different purchase contexts. Report missingness and deviations transparently."];
 const refs = [['Soman, D. (2001)', 'Effects of payment mechanism on spending behavior: The role of rehearsal and immediacy of payments. Journal of Consumer Research, 27(4), 460–474.', 'https://doi.org/10.1086/319621'], ['Gafeeva, R., Hoelzl, E., & Roschk, H. (2018)', 'What else can your payment card do? Multifunctionality of payment modes can reduce payment transparency. Marketing Letters, 29, 61–72.', 'https://doi.org/10.1007/s11002-017-9445-2'], ['Srivastava, J., & Raghubir, P. (2002)', 'Debiasing using decomposition: The case of memory-based credit card expense estimates. Journal of Consumer Psychology, 12(3), 253–264.', 'https://doi.org/10.1207/S15327663JCP1203_07']];
-function Arrow({
-  back = false
-}) {
-  return /*#__PURE__*/_jsx("svg", {
-    viewBox: "0 0 28 28",
-    fill: "none",
-    "aria-hidden": "true",
-    style: back ? {
-      transform: 'rotate(180deg)'
-    } : {},
-    children: /*#__PURE__*/_jsx("path", {
-      d: "M5 14h18M15 6l8 8-8 8",
-      stroke: "currentColor",
-      strokeWidth: "1.4"
-    })
-  });
-}
 function Tag({
   children,
   tone = 'lime'
@@ -37,156 +17,550 @@ function Tag({
   });
 }
 function Heading({
-  children,
-  sub
+  children
 }) {
-  return /*#__PURE__*/_jsxs("div", {
+  return /*#__PURE__*/_jsx("div", {
     className: "heading",
     "data-reveal": true,
-    children: [/*#__PURE__*/_jsx("h2", {
+    children: /*#__PURE__*/_jsx("h2", {
       children: children
-    }), sub && /*#__PURE__*/_jsx("p", {
-      children: sub
-    })]
+    })
   });
 }
-function Printer() {
+function Anatomy({
+  kind
+}) {
   return /*#__PURE__*/_jsx("div", {
-    className: "printer iso",
+    className: 'anatomy-figure iso anatomy-' + kind,
     "data-theme": "light",
     dangerouslySetInnerHTML: {
-      __html: printerSvg
+      __html: researchArt[kind]
     }
   });
 }
-function Recall() {
-  const [selected, setSelected] = useState([true, true, true, false, false]);
-  const count = selected.filter(Boolean).length;
+const researchContent = {
+  "1": {
+    "title": "LITERATURE REVIEW",
+    "sub": "Payment methods can change how expenses are encoded and reconstructed.",
+    "rows": [["Soman · 2001", "Rehearsal and immediacy", "Writing or actively processing a payment amount and immediate wealth depletion affect how past payments influence later spending. This motivates testing payment-related memory, rather than assuming every digital mode behaves alike."], ["Gafeeva et al. · 2018", "Payment transparency", "The study examines how multifunctional payment cards can reduce payment transparency. Its card context motivates our question but does not establish a cash-versus-UPI effect."], ["Srivastava & Raghubir · 2002", "Reconstruction of expenses", "Breaking expense estimates into categories can change memory-based credit-card estimates. Unaided recall and prompted reconstruction should therefore be distinguished."]],
+    "foot": "Background: spending decisions depend partly on what previous payments bring to mind. Citations open the original sources."
+  },
+  "2": {
+    "title": "RESEARCH GAP AND QUESTION",
+    "sub": "Can payment mode change delayed purchase memory in everyday campus spending?",
+    "rows": [["The gap", "Cash versus UPI in the field", "The cited studies do not settle delayed cash-versus-UPI purchase recall against independently recorded transactions in this setting."], ["Research question", "Does assigned payment mode affect recall?", "Compare newcomers randomly assigned to cash or UPI during the same one-week spending period."], ["Hypotheses", "H0: no difference · H1: a difference", "Use a two-sided hypothesis: physical handling may favor cash, while digital records and notifications may favor UPI. The exact outcome definition will be finalized before data collection."]],
+    "foot": "Contribution: a randomized field comparison with vendor records as an independent transaction benchmark."
+  },
+  "3": {
+    "title": "INDEPENDENT AND DEPENDENT VARIABLES",
+    "sub": "One manipulated factor, with two levels. A between-subjects field experiment.",
+    "rows": [["Independent variable", "Assigned payment mode", "Cash only versus UPI only for eligible campus purchases during the experiment week. Each participant experiences one condition."], ["Dependent variable", "Delayed purchase-memory performance", "Tuesday recall compared with the recorded purchases. Exact test, scoring rules and primary metric are pending your specification."], ["Operationalization", "Assignment is distinct from actual use", "Record assigned mode, observed transaction mode and deviations separately. One factor with two levels is not a factorial design."]],
+    "foot": "Construct: memory for actual purchase episodes, distinguished from estimating an amount using known prices."
+  },
+  "4": {
+    "title": "BASELINE TESTING AND MATCHING",
+    "sub": "Measure likely sources of imbalance before revealing payment assignments.",
+    "rows": [["Memory", "A neutral delayed-memory task", "Use standardized instructions, exposure time and delay. Score recall of non-shopping material to avoid rehearsing the later purchase task."], ["Spending habits", "Prior spending and cash use", "With consent, use prior UPI history for digital spending and a brief retrospective survey for cash expenditure and cash share. UPI records alone cannot establish cash spending."], ["Masking the objective", "A broader baseline battery", "Add short attention, numeracy and lifestyle tasks with equal burden for everyone. Present an ethics-approved broad study aim and ask about hypothesis guessing after recall."]],
+    "foot": "Match on baseline memory, mean expenditure and habitual cash share; randomize within pairs. Matching improves balance but does not guarantee equal means."
+  },
+  "5": {
+    "title": "WHY RECRUIT NEWCOMERS?",
+    "sub": "Prior price knowledge can blur the distinction between memory and reconstruction.",
+    "rows": [["The threat", "Familiar prices make totals easier to infer", "A long-term resident may reconstruct expenditure from familiar menu prices without remembering the payment amount."], ["Eligibility restriction", "New to this college", "Recruit adult newcomers who can use both cash and UPI. Screen prior campus residence, outlet familiarity and prior visits before allocation."], ["Remaining caveat", "Newcomers also learn prices", "Keep the spending window identical and record baseline familiarity. Newcomer status reduces this threat; it does not eliminate it."]],
+    "foot": "Internal validity improves through restriction, at the cost of narrower population generalizability."
+  },
+  "7": {
+    "title": "PAYMENT CONDITIONS AND REWARDS",
+    "sub": "Use personal money. No discount. The same reward rule in both conditions.",
+    "rows": [["Cash condition", "Use only cash", "Use cash for eligible purchases during the seven-day experiment. Vendors record expenditure without asking participants to keep a diary."], ["UPI condition", "Use only UPI", "Use UPI for the same eligible purchases and period. Consent-based transaction records are reconciled with vendor logs."], ["Equal incentive", "Reward completion in both groups", "The same monetary reward is conditional on completing the assigned-mode task. It is independent of spending amount and memory-test performance; amount and verification rules must be fixed in advance."]],
+    "foot": "Define eligible transactions, emergencies and mixed-mode purchases before recruitment. Record deviations without deleting assigned participants from the primary comparison."
+  },
+  "8": {
+    "title": "INDEPENDENT TRANSACTION RECORDS",
+    "sub": "Partner with all campus vendors to record both payment conditions.",
+    "rows": [["Vendor logging", "A common transaction record", "Record coded participant ID, date/time, vendor, item, amount and payment mode for each purchase. Keep the capture process the same for cash and UPI."], ["Avoid memory rehearsal", "No participant spending diary", "Asking cash users to write down purchases would add encoding and rehearsal to that condition. Vendor recording keeps this task out of participants’ routines."], ["Record quality", "Reconcile and audit daily", "Check missing IDs, duplicate entries, refunds, split payments and group orders. Reconcile UPI records and vendor totals; audit cash logs against sales records where feasible."]],
+    "foot": "All-vendor coverage is a study requirement to arrange, not a partnership already secured. Off-campus cash expenditure remains harder to verify."
+  },
+  "9": {
+    "title": "ONE-WEEK PROCEDURE",
+    "sub": "A common exposure period and a common Tuesday recall session.",
+    "rows": [["Before the week", "Consent → baseline → match → randomize", "Train vendors, pilot record capture and issue coded participant identifiers. Explain logging and assigned-mode requirements without revealing the recall hypothesis."], ["Monday–Sunday", "Seven days of recorded spending", "Record cash and UPI purchases for one week only. Apply identical participant contact and compliance procedures to both conditions."], ["Tuesday", "Recall before records are opened", "Run the same test at the same time, without phones or transaction histories available during testing. Collect suspicion and compliance checks, then debrief."]],
+    "foot": "Tuesday is two days after the final spending day. Earlier purchases have longer recall delays, so retain transaction timestamps."
+  },
+  "10": {
+    "title": "CONFOUNDERS AND SAFEGUARDS",
+    "sub": "Protect the comparison while keeping ordinary purchases as natural as possible.",
+    "rows": [["Before assignment", "Selection and baseline differences", "Recruit both conditions from the same eligible cohort. Match on prespecified baseline measures and conceal allocation until enrollment and baseline scoring are complete."], ["During spending", "Unequal treatment and contamination", "Keep rewards, instructions, logging and contact equal. Record mode switching, shared orders, price changes and cross-group discussion. Digital histories remain a real-world feature of UPI."], ["During recall", "Experimenter and demand effects", "Standardize the test environment; mask assessors and coders to assignment where possible. Keep phones aside, avoid leading prompts and debrief after testing."]],
+    "foot": "Randomization addresses confounding in expectation. Differential attrition, noncompliance and record gaps can still threaten internal validity."
+  },
+  "11": {
+    "title": "VALIDITY AND RELIABILITY",
+    "sub": "Each quality claim needs a concrete check.",
+    "rows": [["Construct validity", "Measure recall, not price familiarity", "Pilot the memory task and scoring rubric. Compare recalled purchases with independent records; keep recall and total estimation conceptually separate."], ["Reliability", "Consistent scoring and data capture", "Use standardized administration and two independent blinded coders for open responses. Report Cohen’s κ for categorical agreement or an appropriate ICC for continuous scores, once scoring is fixed."], ["Internal and external validity", "Causality has a defined scope", "Concealed randomization supports causal inference; a voluntary sample at one college limits representativeness. Real purchases improve ecological validity, but enforced payment rules remain artificial."]],
+    "foot": "Course links: operationalization, measurement error, demand characteristics, internal validity, construct validity, reliability and external validity."
+  },
+  "12": {
+    "title": "TUESDAY MEMORY TEST",
+    "sub": "Test details and metrics will be finalized next.",
+    "rows": [["Fixed already", "Delayed recall after the spending week", "All participants take the same Tuesday test under standardized conditions and without consulting transaction histories during the task."], ["Pending your details", "Task and scoring specification", "Finalize prompts, response format, time limit, purchase-matching rules, primary outcome and any secondary measures. Do not treat the previous deck’s formulas as decided."], ["Before collection", "Freeze the scoring and analysis rules", "Pilot clarity and difficulty; prespecify missing-record handling, zero purchases, exclusions and how noncompliance will be reported."]],
+    "foot": "No results are shown. The outcome metric and memory-test procedure are intentionally pending."
+  },
+  "13": {
+    "title": "WHAT THIS EXPERIMENT TELLS US",
+    "sub": "Estimate the effect of assignment to cash or UPI under this study’s conditions.",
+    "rows": [["If a difference appears", "Payment conditions affect delayed recall", "Interpret the direction and uncertainty against the prespecified hypothesis. A mode effect alone cannot identify whether salience, effort or digital rehearsal caused it."], ["If no clear difference appears", "Separate precision from absence of evidence", "Inspect effect sizes and confidence intervals. A wide interval is inconclusive; a nonsignificant result alone does not establish equivalence."], ["Next experiments", "Test the mechanism and the boundary", "If supported, replicate and manipulate notification or record access. If unsupported, check measurement quality and adherence, then test longer delays or a more precise design."]],
+    "foot": "A later mode × record-access experiment could use a factorial design. The present study has one manipulated factor."
+  },
+  "14": {
+    "title": "LIMITATIONS AND CAVEATS",
+    "sub": "The design narrows uncertainty; it cannot remove every alternative explanation.",
+    "rows": [["Generalizability", "One college and voluntary newcomers", "Convenience sampling and self-selection limit population validity. Findings may not transfer to residents, other ages, institutions or larger purchases."], ["Ecological validity", "Required modes and monetary rewards", "Rewards and a strict payment rule may change spending. Newcomers learn prices; UPI histories and notifications can support rehearsal before the test."], ["Coverage and ethics", "Missing purchases, spillovers and withholding", "Off-campus purchases, group payments, attrition and vendor errors remain risks. Use informed consent for logging, minimal financial data, ethics review, debriefing and withdrawal rights."]],
+    "foot": "Extend to other cohorts and campuses, longer spending windows and different purchase contexts. Report missingness and deviations transparently."
+  }
+};
+function Copy({
+  row,
+  number,
+  heading,
+  source
+}) {
   return /*#__PURE__*/_jsxs("div", {
-    className: "recall-lab",
-    children: [/*#__PURE__*/_jsx("div", {
-      className: "receipt-row",
-      children: ['Coffee', 'Notebook', 'Juice', 'Snack', 'Lunch'].map((label, i) => /*#__PURE__*/_jsxs("button", {
-        "aria-pressed": selected[i],
-        className: `purchase-slip ${selected[i] ? 'remembered' : ''}`,
-        onClick: () => setSelected(v => v.map((s, j) => i === j ? !s : s)),
-        children: [/*#__PURE__*/_jsxs("span", {
-          className: "slip-index",
-          children: ["0", i + 1]
-        }), /*#__PURE__*/_jsx("span", {
-          className: "slip-tick",
-          children: selected[i] ? '↗' : '—'
-        }), /*#__PURE__*/_jsx("span", {
-          children: label
-        })]
-      }, label))
-    }), /*#__PURE__*/_jsxs("div", {
-      className: "recall-result",
-      children: [/*#__PURE__*/_jsxs("span", {
-        children: [/*#__PURE__*/_jsx("strong", {
-          children: count
-        }), " recalled ", /*#__PURE__*/_jsx("span", {
-          className: "slash",
-          children: "/"
-        }), " ", /*#__PURE__*/_jsx("strong", {
-          children: "5"
-        }), " logged"]
-      }), /*#__PURE__*/_jsxs("span", {
-        className: "result-value",
-        children: [/*#__PURE__*/_jsx(CountUp, {
-          to: count * 20,
-          duration: .5,
-          trigger: "load"
-        }), "%"]
-      })]
-    }), /*#__PURE__*/_jsx("div", {
-      className: "figure-note",
-      children: "Worked example, not study results. Select a purchase to change the score."
+    className: "study-copy",
+    "data-reveal": true,
+    children: [number && /*#__PURE__*/_jsx("span", {
+      className: "study-number",
+      children: number
+    }), /*#__PURE__*/_jsx("h3", {
+      children: heading || row[1]
+    }), /*#__PURE__*/_jsxs("p", {
+      children: [source && /*#__PURE__*/_jsxs(_Fragment, {
+        children: [/*#__PURE__*/_jsxs("strong", {
+          children: [row[0], "."]
+        }), " "]
+      }), heading && heading !== row[1] ? row[1] + '. ' : '', row[2]]
     })]
   });
 }
-function PowerPlot() {
-  const [hover, setHover] = useState(1);
-  const values = [{
-    n: 322,
-    icc: '.03',
-    x: 80
-  }, {
-    n: 350,
-    icc: '.05',
-    x: 270
-  }, {
-    n: 420,
-    icc: '.10',
-    x: 520
-  }];
-  const points = values.map(p => ({
-    ...p,
-    y: 290 - p.n / 600 * 240
-  }));
-  return /*#__PURE__*/_jsxs("div", {
-    className: "power-plot",
-    children: [/*#__PURE__*/_jsxs("div", {
-      className: "plot-head",
+function ResearchSlide({
+  index
+}) {
+  const d = researchContent[index],
+    r = d.rows;
+  let body;
+  if (index === 1) body = /*#__PURE__*/_jsx("div", {
+    className: "literature-track",
+    children: r.map((row, i) => /*#__PURE__*/_jsxs("div", {
+      className: "study-entry",
       children: [/*#__PURE__*/_jsx("span", {
-        children: "Sample needed"
-      }), /*#__PURE__*/_jsx(Tag, {
-        children: "Planning only"
+        className: "timeline-dot"
+      }), /*#__PURE__*/_jsx(Copy, {
+        row: row,
+        number: ['2001', '2018', '2002'][i],
+        source: true
+      }), /*#__PURE__*/_jsx("a", {
+        href: refs[i][2],
+        target: "_blank",
+        rel: "noreferrer",
+        children: "Read study \u2197"
       })]
-    }), /*#__PURE__*/_jsxs("svg", {
-      viewBox: "0 0 600 320",
-      role: "img",
-      "aria-label": "Calculated planning scenarios: ICC .03 requires about 322, .05 about 350, .10 about 420 interns. Target about 350.",
-      children: [[0, 200, 400, 600].map((n, i) => /*#__PURE__*/_jsxs("g", {
-        children: [/*#__PURE__*/_jsx("path", {
-          d: `M65 ${290 - i * 80}H550`,
-          className: "grid-line"
-        }), /*#__PURE__*/_jsx("text", {
-          x: "42",
-          y: 295 - i * 80,
-          textAnchor: "end",
-          children: n
+    }, i))
+  });
+  if (index === 2) body = /*#__PURE__*/_jsxs("div", {
+    className: "gap-composition",
+    children: [/*#__PURE__*/_jsxs("div", {
+      className: "question-poster",
+      "data-reveal": true,
+      children: [/*#__PURE__*/_jsxs("h3", {
+        children: ["Does how we pay", /*#__PURE__*/_jsx("br", {}), "change what", /*#__PURE__*/_jsx("br", {}), "we remember?"]
+      }), /*#__PURE__*/_jsxs("div", {
+        className: "question-modes",
+        children: [/*#__PURE__*/_jsx("span", {
+          children: "CASH"
+        }), /*#__PURE__*/_jsx("span", {
+          children: "vs"
+        }), /*#__PURE__*/_jsx("span", {
+          children: "UPI"
         })]
-      }, n)), /*#__PURE__*/_jsx("path", {
-        d: "M65 50v240h485",
-        className: "axis"
-      }), /*#__PURE__*/_jsx("path", {
-        d: "M65 150H550",
-        className: "plan-line"
-      }), /*#__PURE__*/_jsx("text", {
-        x: "395",
-        y: "141",
-        children: "Target \u2248 350"
-      }), /*#__PURE__*/_jsx("path", {
-        d: points.map((p, i) => `${i ? 'L' : 'M'}${p.x} ${p.y}`).join(' '),
-        className: "data-line"
-      }), points.map((p, i) => /*#__PURE__*/_jsxs("g", {
-        className: "plot-point",
-        onPointerEnter: () => setHover(i),
-        children: [/*#__PURE__*/_jsx("circle", {
-          cx: p.x,
-          cy: p.y,
-          r: hover === i ? 10 : 6,
-          className: "plot-dot"
-        }), /*#__PURE__*/_jsx("text", {
-          x: p.x,
-          y: p.y - 20,
-          textAnchor: "middle",
-          className: "plot-label",
-          children: p.n
-        }), /*#__PURE__*/_jsx("text", {
-          x: p.x,
-          y: "315",
-          textAnchor: "middle",
-          children: p.icc
-        })]
-      }, p.icc))]
+      })]
     }), /*#__PURE__*/_jsx("div", {
-      className: "plot-caption",
-      children: "Within-team correlation (ICC)"
-    }), /*#__PURE__*/_jsx("p", {
-      className: "figure-note",
-      children: "Calculated scenarios \xB7 d = .30 \xB7 80% power \xB7 about 6 interns per team"
+      className: "stacked-copy",
+      children: r.map((row, i) => /*#__PURE__*/_jsx(Copy, {
+        row: row,
+        heading: ['The research gap', 'Research question', 'Hypotheses'][i]
+      }, i))
+    })]
+  });
+  if (index === 3) body = /*#__PURE__*/_jsxs("div", {
+    className: "variable-map simplified-variables",
+    children: [/*#__PURE__*/_jsxs("div", {
+      className: "variable-input",
+      "data-reveal": true,
+      children: [/*#__PURE__*/_jsxs("h3", {
+        children: [/*#__PURE__*/_jsx("strong", {
+          children: "IV"
+        }), " \xB7 Payment mode"]
+      }), /*#__PURE__*/_jsxs("div", {
+        className: "mini-payments",
+        children: [/*#__PURE__*/_jsxs("div", {
+          className: "cash",
+          children: [/*#__PURE__*/_jsx(Anatomy, {
+            kind: "cash"
+          }), /*#__PURE__*/_jsx("b", {
+            children: "CASH"
+          })]
+        }), /*#__PURE__*/_jsxs("div", {
+          className: "upi",
+          children: [/*#__PURE__*/_jsx(Anatomy, {
+            kind: "upi"
+          }), /*#__PURE__*/_jsx("b", {
+            children: "UPI"
+          })]
+        })]
+      })]
+    }), /*#__PURE__*/_jsx("div", {
+      className: "causal-link",
+      "data-reveal": true,
+      children: "\u2192"
+    }), /*#__PURE__*/_jsxs("div", {
+      className: "variable-output",
+      "data-reveal": true,
+      children: [/*#__PURE__*/_jsxs("h3", {
+        children: [/*#__PURE__*/_jsx("strong", {
+          children: "DV"
+        }), " \xB7 Purchase memory"]
+      }), /*#__PURE__*/_jsx("div", {
+        className: "memory-panel",
+        children: /*#__PURE__*/_jsx(Anatomy, {
+          kind: "recall"
+        })
+      })]
+    })]
+  });
+  if (index === 4) body = /*#__PURE__*/_jsxs("div", {
+    className: "figure-with-steps",
+    children: [/*#__PURE__*/_jsxs("div", {
+      className: "figure-ground blue-ground",
+      "data-reveal": true,
+      children: [/*#__PURE__*/_jsx(Anatomy, {
+        kind: "matching"
+      }), /*#__PURE__*/_jsxs("div", {
+        className: "profile-keys",
+        children: [/*#__PURE__*/_jsx("span", {
+          children: "Memory"
+        }), /*#__PURE__*/_jsx("span", {
+          children: "Expenditure"
+        }), /*#__PURE__*/_jsx("span", {
+          children: "Cash habits"
+        })]
+      })]
+    }), /*#__PURE__*/_jsx("div", {
+      className: "step-stack",
+      children: r.map((row, i) => /*#__PURE__*/_jsx(Copy, {
+        row: row,
+        number: '0' + (i + 1)
+      }, i))
+    })]
+  });
+  if (index === 5) body = /*#__PURE__*/_jsxs("div", {
+    className: "newcomer-composition",
+    children: [/*#__PURE__*/_jsxs("div", {
+      className: "menu-illustration",
+      "data-reveal": true,
+      children: [/*#__PURE__*/_jsxs("div", {
+        className: "menu-sheet",
+        children: [/*#__PURE__*/_jsx("span", {
+          children: "CAMPUS CAF\xC9"
+        }), /*#__PURE__*/_jsxs("div", {
+          children: ["Tea ", /*#__PURE__*/_jsx("b", {
+            children: "\u20B9 ?"
+          })]
+        }), /*#__PURE__*/_jsxs("div", {
+          children: ["Lunch ", /*#__PURE__*/_jsx("b", {
+            children: "\u20B9 ?"
+          })]
+        }), /*#__PURE__*/_jsxs("div", {
+          children: ["Snack ", /*#__PURE__*/_jsx("b", {
+            children: "\u20B9 ?"
+          })]
+        }), /*#__PURE__*/_jsx("small", {
+          children: "Familiar prices can support reconstruction"
+        })]
+      }), /*#__PURE__*/_jsxs("div", {
+        className: "newcomer-stamp",
+        children: ["NEW", /*#__PURE__*/_jsx("br", {}), "TO CAMPUS"]
+      })]
+    }), /*#__PURE__*/_jsx("div", {
+      className: "editorial-list",
+      children: r.map((row, i) => /*#__PURE__*/_jsx(Copy, {
+        row: row
+      }, i))
+    })]
+  });
+  if (index === 7) body = /*#__PURE__*/_jsxs("div", {
+    className: "conditions-composition",
+    children: [/*#__PURE__*/_jsxs("div", {
+      className: "payment-condition cash",
+      "data-reveal": true,
+      children: [/*#__PURE__*/_jsx(Anatomy, {
+        kind: "cash"
+      }), /*#__PURE__*/_jsx(Copy, {
+        row: r[0]
+      })]
+    }), /*#__PURE__*/_jsxs("div", {
+      className: "payment-condition upi",
+      "data-reveal": true,
+      children: [/*#__PURE__*/_jsx(Anatomy, {
+        kind: "upi"
+      }), /*#__PURE__*/_jsx(Copy, {
+        row: r[1]
+      })]
+    }), /*#__PURE__*/_jsxs("div", {
+      className: "equal-reward",
+      "data-reveal": true,
+      children: [/*#__PURE__*/_jsx("span", {
+        className: "equality-sign",
+        children: "="
+      }), /*#__PURE__*/_jsx(Copy, {
+        row: r[2]
+      })]
+    })]
+  });
+  if (index === 8) body = /*#__PURE__*/_jsxs("div", {
+    className: "vendor-composition",
+    children: [/*#__PURE__*/_jsxs("div", {
+      className: "vendor-scene",
+      "data-reveal": true,
+      children: [/*#__PURE__*/_jsx(Anatomy, {
+        kind: "vendor"
+      }), /*#__PURE__*/_jsxs("div", {
+        className: "record-route",
+        children: [/*#__PURE__*/_jsx("span", {
+          children: "Purchase"
+        }), /*#__PURE__*/_jsx("i", {
+          children: "\u2192"
+        }), /*#__PURE__*/_jsx("span", {
+          children: "Vendor log"
+        }), /*#__PURE__*/_jsx("i", {
+          children: "\u2192"
+        }), /*#__PURE__*/_jsx("span", {
+          children: "Recall check"
+        })]
+      })]
+    }), /*#__PURE__*/_jsxs("div", {
+      className: "vendor-copy",
+      children: [/*#__PURE__*/_jsx(Copy, {
+        row: r[0]
+      }), /*#__PURE__*/_jsxs("div", {
+        className: "ledger-fields",
+        children: [/*#__PURE__*/_jsx("span", {
+          children: "ID"
+        }), /*#__PURE__*/_jsx("span", {
+          children: "Time"
+        }), /*#__PURE__*/_jsx("span", {
+          children: "Item"
+        }), /*#__PURE__*/_jsx("span", {
+          children: "Amount"
+        }), /*#__PURE__*/_jsx("span", {
+          children: "Mode"
+        })]
+      }), /*#__PURE__*/_jsx(Copy, {
+        row: r[1]
+      }), /*#__PURE__*/_jsx(Copy, {
+        row: r[2]
+      })]
+    })]
+  });
+  if (index === 9) body = /*#__PURE__*/_jsxs("div", {
+    className: "procedure-composition",
+    children: [/*#__PURE__*/_jsxs("div", {
+      className: "prep-row",
+      "data-reveal": true,
+      children: [/*#__PURE__*/_jsx("span", {
+        className: "phase-number",
+        children: "01"
+      }), /*#__PURE__*/_jsx(Copy, {
+        row: r[0]
+      })]
+    }), /*#__PURE__*/_jsxs("div", {
+      className: "week-row",
+      "data-reveal": true,
+      children: [/*#__PURE__*/_jsx("span", {
+        className: "phase-number",
+        children: "02"
+      }), /*#__PURE__*/_jsxs("div", {
+        children: [/*#__PURE__*/_jsx("h3", {
+          className: "phase-title",
+          children: "Monday\u2013Sunday \xB7 Recorded spending"
+        }), /*#__PURE__*/_jsx("div", {
+          className: "week-days",
+          children: ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'].map((day, i) => /*#__PURE__*/_jsxs("div", {
+            children: [/*#__PURE__*/_jsx("span", {
+              children: day
+            }), /*#__PURE__*/_jsx("b", {
+              children: i + 1
+            })]
+          }, day))
+        }), /*#__PURE__*/_jsx("p", {
+          children: r[1][2]
+        })]
+      })]
+    }), /*#__PURE__*/_jsxs("div", {
+      className: "test-row",
+      "data-reveal": true,
+      children: [/*#__PURE__*/_jsx("span", {
+        className: "phase-number",
+        children: "03"
+      }), /*#__PURE__*/_jsxs("div", {
+        children: [/*#__PURE__*/_jsx("h3", {
+          children: "Tuesday \xB7 Surprise recall"
+        }), /*#__PURE__*/_jsx("p", {
+          children: r[2][2]
+        })]
+      }), /*#__PURE__*/_jsx("span", {
+        className: "tuesday-seal",
+        children: "TUE"
+      })]
+    })]
+  });
+  if (index === 10) body = /*#__PURE__*/_jsxs("div", {
+    className: "safeguard-table",
+    children: [/*#__PURE__*/_jsxs("div", {
+      className: "table-head",
+      children: [/*#__PURE__*/_jsx("span", {
+        children: "Stage"
+      }), /*#__PURE__*/_jsx("span", {
+        children: "Threat to validity"
+      }), /*#__PURE__*/_jsx("span", {
+        children: "Safeguard"
+      })]
+    }), r.map((row, i) => /*#__PURE__*/_jsxs("div", {
+      className: "safeguard-row",
+      "data-reveal": true,
+      children: [/*#__PURE__*/_jsxs("span", {
+        className: "phase-cell",
+        children: ["0", i + 1, /*#__PURE__*/_jsx("small", {
+          children: row[0]
+        })]
+      }), /*#__PURE__*/_jsx("h3", {
+        children: row[1]
+      }), /*#__PURE__*/_jsx("p", {
+        children: row[2]
+      })]
+    }, i))]
+  });
+  if (index === 11) body = /*#__PURE__*/_jsxs("div", {
+    className: "validity-composition",
+    children: [/*#__PURE__*/_jsxs("div", {
+      className: "validity-principle",
+      "data-reveal": true,
+      children: [/*#__PURE__*/_jsx("span", {
+        className: "big-check",
+        children: "\u2713"
+      }), /*#__PURE__*/_jsx(Copy, {
+        row: r[0],
+        heading: r[0][0]
+      })]
+    }), /*#__PURE__*/_jsxs("div", {
+      className: "reliability-principle",
+      "data-reveal": true,
+      children: [/*#__PURE__*/_jsxs("div", {
+        className: "coder-pair",
+        children: [/*#__PURE__*/_jsx("span", {
+          children: "Coder A"
+        }), /*#__PURE__*/_jsx("i", {
+          children: "\u2194"
+        }), /*#__PURE__*/_jsx("span", {
+          children: "Coder B"
+        })]
+      }), /*#__PURE__*/_jsx(Copy, {
+        row: r[1],
+        heading: r[1][0]
+      })]
+    }), /*#__PURE__*/_jsxs("div", {
+      className: "scope-principle",
+      "data-reveal": true,
+      children: [/*#__PURE__*/_jsx("span", {
+        className: "scope-symbol",
+        children: "\u25CE"
+      }), /*#__PURE__*/_jsx(Copy, {
+        row: r[2],
+        heading: r[2][0]
+      })]
+    })]
+  });
+  if (index === 12) body = /*#__PURE__*/_jsxs("div", {
+    className: "recall-composition",
+    children: [/*#__PURE__*/_jsxs("div", {
+      className: "recall-scene",
+      "data-reveal": true,
+      children: [/*#__PURE__*/_jsx(Anatomy, {
+        kind: "recall"
+      }), /*#__PURE__*/_jsxs("span", {
+        className: "pending-stamp",
+        children: ["TASK & METRICS", /*#__PURE__*/_jsx("br", {}), "TO BE FINALIZED"]
+      })]
+    }), /*#__PURE__*/_jsx("div", {
+      className: "checklist-copy",
+      children: r.map((row, i) => /*#__PURE__*/_jsx(Copy, {
+        row: row,
+        number: ['✓', '…', '→'][i]
+      }, i))
+    })]
+  });
+  if (index === 13) body = /*#__PURE__*/_jsxs("div", {
+    className: "inference-composition",
+    children: [/*#__PURE__*/_jsxs("div", {
+      className: "inference-branch cash",
+      "data-reveal": true,
+      children: [/*#__PURE__*/_jsx("span", {
+        className: "branch-symbol",
+        children: "\u2197"
+      }), /*#__PURE__*/_jsx(Copy, {
+        row: r[0]
+      })]
+    }), /*#__PURE__*/_jsxs("div", {
+      className: "inference-branch blue-ground",
+      "data-reveal": true,
+      children: [/*#__PURE__*/_jsx("span", {
+        className: "branch-symbol",
+        children: "\u2194"
+      }), /*#__PURE__*/_jsx(Copy, {
+        row: r[1]
+      })]
+    }), /*#__PURE__*/_jsx("div", {
+      className: "future-strip",
+      "data-reveal": true,
+      children: /*#__PURE__*/_jsx(Copy, {
+        row: r[2]
+      })
+    })]
+  });
+  if (index === 14) body = /*#__PURE__*/_jsxs("div", {
+    className: "limits-composition",
+    children: [/*#__PURE__*/_jsxs("div", {
+      className: "scope-poster",
+      "data-reveal": true,
+      children: [/*#__PURE__*/_jsx("strong", {
+        children: "01"
+      }), /*#__PURE__*/_jsx("h3", {
+        children: "college."
+      }), /*#__PURE__*/_jsxs("div", {
+        children: ["Newcomers", /*#__PURE__*/_jsx("br", {}), "One spending week", /*#__PURE__*/_jsx("br", {}), "Voluntary participation"]
+      })]
+    }), /*#__PURE__*/_jsx("div", {
+      className: "limits-editorial",
+      children: r.map((row, i) => /*#__PURE__*/_jsx(Copy, {
+        row: row,
+        number: '0' + (i + 1)
+      }, i))
+    })]
+  });
+  return /*#__PURE__*/_jsxs(_Fragment, {
+    children: [/*#__PURE__*/_jsx(Heading, {
+      children: d.title
+    }), /*#__PURE__*/_jsx("div", {
+      className: "study-body",
+      children: body
     })]
   });
 }
@@ -201,7 +575,7 @@ function App() {
   panelRef.current = panel;
   const reduced = useRef(matchMedia('(prefers-reduced-motion: reduce)').matches);
   const go = useCallback((i, immediate = false) => {
-    i = Math.max(0, Math.min(11, i));
+    i = Math.max(0, Math.min(titles.length - 1, i));
     lenis.current?.scrollTo(sections.current[i], {
       duration: reduced.current || immediate ? 0 : 1.15,
       immediate: reduced.current || immediate,
@@ -219,12 +593,12 @@ function App() {
     smooth.on('scroll', ({
       scroll
     }) => {
-      const next = Math.max(0, Math.min(11, Math.round(scroll / innerHeight)));
+      const next = Math.max(0, Math.min(titles.length - 1, Math.round(scroll / innerHeight)));
       activeRef.current = next;
       setActive(next);
     });
     const initial = parseInt(location.hash.replace('#slide-', '')) - 1;
-    if (initial >= 0 && initial < 12) setTimeout(() => go(initial, true), 80);
+    if (initial >= 0 && initial < titles.length) setTimeout(() => go(initial, true), 80);
     const wheel = e => {
       if (panelRef.current || e.target.closest('[data-lenis-prevent]')) return;
       e.preventDefault();
@@ -265,10 +639,26 @@ function App() {
       });
       if (reduced.current) return;
       const slide = sections.current[active];
+      if (slide.querySelector('.anatomy-figure')) gsap.from('.anatomy-figure', {
+        y: 16,
+        opacity: 0,
+        duration: 1.1,
+        stagger: .14,
+        delay: .2,
+        clearProps: 'all'
+      });
+      if (slide.querySelector('.week-days>div')) gsap.from('.week-days>div', {
+        y: 18,
+        opacity: 0,
+        duration: .5,
+        stagger: .09,
+        delay: .4,
+        clearProps: 'all'
+      });
       const animate = (selector, vars) => {
         if (slide.querySelector(selector)) gsap.to(selector, vars);
       };
-      animate('.printer-paper', {
+      animate('.unused-printer-paper', {
         y: -12,
         duration: 2,
         repeat: -1,
@@ -457,7 +847,7 @@ function App() {
       }
       if (e.key === 'End') {
         e.preventDefault();
-        go(11);
+        go(titles.length - 1);
       }
     };
     window.addEventListener('keydown', key);
@@ -495,258 +885,90 @@ function App() {
             children: "\u25CF"
           }), " 2026"]
         })]
-      }), children, /*#__PURE__*/_jsxs("footer", {
-        className: "paper-footer",
-        children: [/*#__PURE__*/_jsx("span", {
-          children: chapters[i]
-        }), /*#__PURE__*/_jsxs("span", {
-          children: ["Research proposal ", /*#__PURE__*/_jsxs("span", {
-            className: "page-number",
-            children: [String(i + 1).padStart(2, '0'), " / 12"]
-          })]
-        })]
-      })]
+      }), children]
     })
   }, i);
   return /*#__PURE__*/_jsxs(_Fragment, {
     children: [/*#__PURE__*/_jsxs("main", {
-      children: [frame(0, /*#__PURE__*/_jsxs(_Fragment, {
-        children: [/*#__PURE__*/_jsxs("div", {
-          className: "cover-main",
-          children: [/*#__PURE__*/_jsxs("div", {
-            className: "cover-title",
-            "data-reveal": true,
-            children: [/*#__PURE__*/_jsx("div", {
-              className: "eyebrow",
-              children: "Cash vs UPI"
-            }), /*#__PURE__*/_jsxs("h1", {
-              children: ["THE PURCHASES", /*#__PURE__*/_jsx("br", {}), "WE REMEMBER."]
-            }), /*#__PURE__*/_jsxs("p", {
-              children: ["Does how we pay change ", /*#__PURE__*/_jsx("br", {}), "what we recall?"]
-            })]
-          }), /*#__PURE__*/_jsxs("div", {
-            className: "cover-art",
-            "data-reveal": true,
-            children: [/*#__PURE__*/_jsx("span", {
-              className: "corner-label",
-              children: "Fig. 01 / The paper trail"
-            }), /*#__PURE__*/_jsx(Printer, {}), /*#__PURE__*/_jsx("div", {
-              className: "art-cross",
-              children: "+"
-            })]
-          })]
-        }), /*#__PURE__*/_jsxs("div", {
-          className: "orange-strip",
+      children: [frame(0, /*#__PURE__*/_jsxs("div", {
+        className: "cover-main",
+        children: [/*#__PURE__*/_jsx("div", {
+          className: "cover-title",
           "data-reveal": true,
-          children: [/*#__PURE__*/_jsx("span", {
-            children: "A team-randomized field experiment with summer interns"
-          }), /*#__PURE__*/_jsx("span", {
-            children: "Own money \xB7 One college \xB7 Intern Food Week"
-          })]
+          children: /*#__PURE__*/_jsxs("h1", {
+            children: ["THE PURCHASES", /*#__PURE__*/_jsx("br", {}), "WE REMEMBER."]
+          })
         }), /*#__PURE__*/_jsxs("div", {
-          className: "cover-bottom",
+          className: "cover-art memory-art",
           "data-reveal": true,
           children: [/*#__PURE__*/_jsxs("div", {
-            children: [/*#__PURE__*/_jsx("strong", {
-              children: "01"
-            }), /*#__PURE__*/_jsx("span", {
-              children: "host college"
-            })]
-          }), /*#__PURE__*/_jsxs("div", {
-            children: [/*#__PURE__*/_jsx("strong", {
-              children: "07"
-            }), /*#__PURE__*/_jsx("span", {
-              children: "spending days"
-            })]
-          }), /*#__PURE__*/_jsxs("div", {
-            children: [/*#__PURE__*/_jsx("strong", {
-              children: "01"
-            }), /*#__PURE__*/_jsx("span", {
-              children: "surprise recall test"
-            })]
-          }), /*#__PURE__*/_jsxs("div", {
-            className: "cover-detail",
-            children: [/*#__PURE__*/_jsx("strong", {
-              children: "25%"
-            }), /*#__PURE__*/_jsx("span", {
-              children: "Food Week discount"
-            })]
-          })]
-        })]
-      }), 'cover'), frame(1, /*#__PURE__*/_jsxs(_Fragment, {
-        children: [/*#__PURE__*/_jsxs(Heading, {
-          sub: "Payment leaves more than a transaction.",
-          children: ["TWO WAYS TO PAY.", /*#__PURE__*/_jsx("br", {}), "TWO MEMORY CUES."]
-        }), /*#__PURE__*/_jsxs("div", {
-          className: "comparison-row",
-          children: [/*#__PURE__*/_jsxs("div", {
-            className: "cue-panel orange",
-            "data-reveal": true,
+            className: "memory-modes",
             children: [/*#__PURE__*/_jsxs("div", {
-              className: "cue-copy",
-              children: [/*#__PURE__*/_jsx("span", {
-                className: "eyebrow",
-                children: "01 / Physical salience"
-              }), /*#__PURE__*/_jsx("h3", {
-                children: "Cash is handled."
-              }), /*#__PURE__*/_jsxs("p", {
-                children: ["Counting, handing over,", /*#__PURE__*/_jsx("br", {}), "receiving change."]
+              className: "payment-object cash",
+              children: [/*#__PURE__*/_jsx(Anatomy, {
+                kind: "cash"
+              }), /*#__PURE__*/_jsx("b", {
+                children: "CASH"
               })]
-            }), /*#__PURE__*/_jsx(Wallet, {})]
-          }), /*#__PURE__*/_jsxs("div", {
-            className: "cue-panel blue",
-            "data-reveal": true,
-            children: [/*#__PURE__*/_jsxs("div", {
-              className: "cue-copy",
-              children: [/*#__PURE__*/_jsx("span", {
-                className: "eyebrow",
-                children: "02 / Digital rehearsal"
-              }), /*#__PURE__*/_jsx("h3", {
-                children: "UPI leaves a trail."
-              }), /*#__PURE__*/_jsxs("p", {
-                children: ["Notifications, histories,", /*#__PURE__*/_jsx("br", {}), "and chances to check."]
+            }), /*#__PURE__*/_jsxs("div", {
+              className: "payment-object upi",
+              children: [/*#__PURE__*/_jsx(Anatomy, {
+                kind: "upi"
+              }), /*#__PURE__*/_jsx("b", {
+                children: "UPI"
               })]
-            }), /*#__PURE__*/_jsx(Phone, {})]
-          })]
-        }), /*#__PURE__*/_jsxs("div", {
-          className: "bottom-question",
-          "data-reveal": true,
-          children: ["Which helps us remember several days later? ", /*#__PURE__*/_jsx("span", {
-            children: "?"
-          })]
-        })]
-      })), frame(2, /*#__PURE__*/_jsxs(_Fragment, {
-        children: [/*#__PURE__*/_jsxs("div", {
-          className: "lit-layout",
-          children: [/*#__PURE__*/_jsxs("div", {
-            className: "lit-title",
-            "data-reveal": true,
-            children: [/*#__PURE__*/_jsx(Tag, {
-              children: "Review of literature"
-            }), /*#__PURE__*/_jsxs("h2", {
-              children: ["WHAT WE KNOW.", /*#__PURE__*/_jsx("br", {}), "WHAT WE STILL", /*#__PURE__*/_jsx("br", {}), "NEED TO TEST."]
-            }), /*#__PURE__*/_jsx(Pencil, {})]
+            })]
           }), /*#__PURE__*/_jsx("div", {
-            className: "lit-rows",
-            children: [['2001', 'Soman', 'Payment rehearsal affects memory and later spending.'], ['2018', 'Gafeeva et al.', 'Recent card purchases were recalled less accurately than cash.'], ['2002', 'Srivastava & Raghubir', 'Breaking expense estimates into parts can improve accuracy.']].map(([year, name, finding], i) => /*#__PURE__*/_jsxs("div", {
-              className: "lit-row",
-              "data-reveal": true,
-              children: [/*#__PURE__*/_jsx("span", {
-                className: "lit-year",
-                children: year
-              }), /*#__PURE__*/_jsxs("div", {
-                children: [/*#__PURE__*/_jsx("h3", {
-                  children: name
-                }), /*#__PURE__*/_jsx("p", {
-                  children: finding
-                })]
-              }), /*#__PURE__*/_jsx("a", {
-                href: refs[i === 0 ? 0 : i === 1 ? 1 : 2][2],
-                target: "_blank",
-                rel: "noreferrer",
-                "aria-label": `Read ${name}`,
-                children: "\u2197"
-              })]
-            }, year))
-          })]
-        }), /*#__PURE__*/_jsxs("div", {
-          className: "gap-band lime",
-          "data-reveal": true,
-          children: [/*#__PURE__*/_jsx("span", {
-            className: "eyebrow",
-            children: "The gap"
-          }), /*#__PURE__*/_jsxs("p", {
-            children: ["Delayed UPI purchase recall,", /*#__PURE__*/_jsx("br", {}), "checked against independent outlet records."]
-          }), /*#__PURE__*/_jsx("span", {
-            className: "large-arrow",
-            children: "\u2197"
+            className: "memory-delay",
+            children: "7 spending days \u2192 Tuesday recall"
+          }), /*#__PURE__*/_jsx("div", {
+            className: "memory-question",
+            children: "What did you purchase?"
           })]
         })]
-      })), frame(3, /*#__PURE__*/_jsxs(_Fragment, {
-        children: [/*#__PURE__*/_jsxs(Heading, {
-          sub: "Does assigned payment mode change delayed purchase recall?",
-          children: ["ONE QUESTION.", /*#__PURE__*/_jsx("br", {}), "TWO PLAUSIBLE ANSWERS."]
-        }), /*#__PURE__*/_jsxs("div", {
-          className: "hypothesis-grid",
-          children: [/*#__PURE__*/_jsxs("div", {
-            className: "hypothesis lime",
-            "data-reveal": true,
-            children: [/*#__PURE__*/_jsx("span", {
-              className: "eyebrow",
-              children: "Salience prediction"
-            }), /*#__PURE__*/_jsxs("h3", {
-              children: ["CASH", /*#__PURE__*/_jsx("br", {}), "RECALLS BETTER."]
-            }), /*#__PURE__*/_jsxs("p", {
-              children: ["The physical payment", /*#__PURE__*/_jsx("br", {}), "may leave a stronger memory."]
-            }), /*#__PURE__*/_jsx(Card, {})]
-          }), /*#__PURE__*/_jsxs("div", {
-            className: "hypothesis blue",
-            "data-reveal": true,
-            children: [/*#__PURE__*/_jsx("span", {
-              className: "eyebrow",
-              children: "Record prediction"
-            }), /*#__PURE__*/_jsxs("h3", {
-              children: ["UPI", /*#__PURE__*/_jsx("br", {}), "RECALLS BETTER."]
-            }), /*#__PURE__*/_jsxs("p", {
-              children: ["Records and notifications", /*#__PURE__*/_jsx("br", {}), "may rehearse the purchase."]
-            }), /*#__PURE__*/_jsx(Card, {
-              mode: "upi"
-            })]
-          })]
-        }), /*#__PURE__*/_jsxs("div", {
-          className: "hypothesis-footer",
-          "data-reveal": true,
-          children: [/*#__PURE__*/_jsx("b", {
-            children: "H1"
-          }), " Recall rates differ by mode. ", /*#__PURE__*/_jsxs("span", {
-            children: [/*#__PURE__*/_jsx("b", {
-              children: "H0"
-            }), " No difference. ", /*#__PURE__*/_jsx(Tag, {
-              tone: "orange",
-              children: "Two-sided test"
-            })]
-          })]
-        })]
-      })), frame(4, /*#__PURE__*/_jsxs(_Fragment, {
-        children: [/*#__PURE__*/_jsxs("div", {
+      }), 'cover revised-cover'), frame(1, /*#__PURE__*/_jsx(ResearchSlide, {
+        index: 1
+      }), 'research-slide layout-1'), frame(2, /*#__PURE__*/_jsx(ResearchSlide, {
+        index: 2
+      }), 'research-slide layout-2'), frame(3, /*#__PURE__*/_jsx(ResearchSlide, {
+        index: 3
+      }), 'research-slide layout-3'), frame(4, /*#__PURE__*/_jsx(ResearchSlide, {
+        index: 4
+      }), 'research-slide layout-4'), frame(5, /*#__PURE__*/_jsx(ResearchSlide, {
+        index: 5
+      }), 'research-slide layout-5'), frame(6, /*#__PURE__*/_jsxs(_Fragment, {
+        children: [/*#__PURE__*/_jsx("div", {
           className: "design-top",
-          children: [/*#__PURE__*/_jsxs(Heading, {
-            children: ["RANDOMIZE TEAMS,", /*#__PURE__*/_jsx("br", {}), "NOT TEAMMATES."]
-          }), /*#__PURE__*/_jsxs("div", {
-            className: "sample-stamp",
-            "data-reveal": true,
-            children: [/*#__PURE__*/_jsx("strong", {
-              children: /*#__PURE__*/_jsx(CountUp, {
-                to: 58,
-                duration: 1.2
-              })
-            }), /*#__PURE__*/_jsxs("span", {
-              children: ["teams targeted", /*#__PURE__*/_jsx("br", {}), "29 matched pairs"]
-            })]
+          children: /*#__PURE__*/_jsxs(Heading, {
+            children: ["RANDOM ALLOCATION", /*#__PURE__*/_jsx("br", {}), "WITHIN MATCHED PAIRS."]
+          })
+        }), /*#__PURE__*/_jsxs("div", {
+          className: "sampling-method",
+          "data-reveal": true,
+          children: [/*#__PURE__*/_jsx("h3", {
+            children: "Convenience recruitment + matched-pair randomization"
+          }), /*#__PURE__*/_jsx("p", {
+            children: "Recruit eligible newcomers at one college. Pair participants with similar baseline memory, expenditure and cash habits; randomly assign one person in each pair to cash and the other to UPI."
           })]
         }), /*#__PURE__*/_jsxs("div", {
           className: "allocation",
           "data-reveal": true,
           children: [/*#__PURE__*/_jsxs("div", {
             className: "wing-unit",
-            children: [/*#__PURE__*/_jsx("span", {
-              children: "01 / Recruit"
-            }), /*#__PURE__*/_jsx("div", {
+            children: [/*#__PURE__*/_jsx("div", {
               className: "wing-building",
               children: Array.from({
                 length: 12
               }, (_, i) => /*#__PURE__*/_jsx("i", {}, i))
             }), /*#__PURE__*/_jsx("h3", {
-              children: "Intern lab / project teams"
+              children: "Recruit eligible newcomers"
             })]
           }), /*#__PURE__*/_jsx("div", {
             className: "allocation-arrow",
             children: "\u2192"
           }), /*#__PURE__*/_jsxs("div", {
             className: "wing-unit",
-            children: [/*#__PURE__*/_jsx("span", {
-              children: "02 / Match"
-            }), /*#__PURE__*/_jsxs("div", {
+            children: [/*#__PURE__*/_jsxs("div", {
               className: "paired-wings",
               children: [/*#__PURE__*/_jsx("div", {
                 className: "mini-building",
@@ -756,7 +978,7 @@ function App() {
                 children: "B"
               })]
             }), /*#__PURE__*/_jsx("h3", {
-              children: "Similar baseline profiles"
+              children: "Match baseline profiles"
             })]
           }), /*#__PURE__*/_jsx("div", {
             className: "allocation-arrow",
@@ -765,16 +987,16 @@ function App() {
             className: "assigned-wings",
             children: [/*#__PURE__*/_jsxs("div", {
               className: "lime",
-              children: ["Team A ", /*#__PURE__*/_jsx("b", {
+              children: ["Person A ", /*#__PURE__*/_jsx("b", {
                 children: "CASH"
               })]
             }), /*#__PURE__*/_jsxs("div", {
-              className: "blue",
-              children: ["Team B ", /*#__PURE__*/_jsx("b", {
+              className: "orange",
+              children: ["Person B ", /*#__PURE__*/_jsx("b", {
                 children: "UPI"
               })]
             }), /*#__PURE__*/_jsx("span", {
-              children: "03 / Concealed random assignment within each pair"
+              children: "Concealed random assignment within each pair"
             })]
           })]
         }), /*#__PURE__*/_jsxs("div", {
@@ -785,293 +1007,28 @@ function App() {
           }), /*#__PURE__*/_jsx("span", {
             children: "Uses both modes"
           }), /*#__PURE__*/_jsx("span", {
-            children: "Teams of at least 3"
+            children: "Matched participant pairs"
           }), /*#__PURE__*/_jsx("span", {
             children: "New to this campus"
           })]
         })]
-      })), frame(5, /*#__PURE__*/_jsxs(_Fragment, {
-        children: [/*#__PURE__*/_jsxs(Heading, {
-          sub: "One host college. The same discount. Identical outlet logging.",
-          children: ["THEIR OWN MONEY.", /*#__PURE__*/_jsx("br", {}), "TWO PAYMENT MODES."]
-        }), /*#__PURE__*/_jsxs("div", {
-          className: "conditions-table",
-          "data-reveal": true,
-          children: [/*#__PURE__*/_jsxs("div", {
-            className: "condition-labels",
-            children: [/*#__PURE__*/_jsx("span", {
-              children: "Money used"
-            }), /*#__PURE__*/_jsx("span", {
-              children: "At partner outlets"
-            }), /*#__PURE__*/_jsx("span", {
-              children: "Practical support"
-            })]
-          }), /*#__PURE__*/_jsxs("div", {
-            className: "condition-column",
-            children: [/*#__PURE__*/_jsx("h3", {
-              className: "lime",
-              children: "CASH"
-            }), /*#__PURE__*/_jsx("span", {
-              children: "Own money, in cash"
-            }), /*#__PURE__*/_jsx("span", {
-              children: "Cash + 25% discount"
-            }), /*#__PURE__*/_jsx("span", {
-              children: "Daily cash-conversion desk"
-            })]
-          }), /*#__PURE__*/_jsxs("div", {
-            className: "condition-column",
-            children: [/*#__PURE__*/_jsx("h3", {
-              className: "blue",
-              children: "UPI"
-            }), /*#__PURE__*/_jsx("span", {
-              children: "Own money, via UPI"
-            }), /*#__PURE__*/_jsx("span", {
-              children: "Food Week QR + 25% discount"
-            }), /*#__PURE__*/_jsx("span", {
-              children: "History & notifications remain"
-            })]
-          })]
-        }), /*#__PURE__*/_jsxs("div", {
-          className: "conditions-bottom",
-          "data-reveal": true,
-          children: [/*#__PURE__*/_jsx(Tag, {
-            tone: "orange",
-            children: "25% off personal orders"
-          }), /*#__PURE__*/_jsxs("p", {
-            children: ["Other spending is unrestricted.", /*#__PURE__*/_jsx("br", {}), "Cash exchange is 1:1, not a grant."]
-          }), /*#__PURE__*/_jsx("span", {
-            className: "large-arrow",
-            children: "\u2197"
-          })]
-        })]
-      })), frame(6, /*#__PURE__*/_jsxs(_Fragment, {
-        children: [/*#__PURE__*/_jsxs(Heading, {
-          children: ["SEVEN SPENDING DAYS.", /*#__PURE__*/_jsx("br", {}), "TUESDAY RECALL."]
-        }), /*#__PURE__*/_jsx("div", {
-          className: "timeline",
-          "data-reveal": true,
-          children: [['01', 'Weeks 1–2', 'Baseline', 'Consent, lifestyle survey +\npurchase-memory task.', 'paper'], ['02', 'End of week 2', 'Assign & brief', 'Match teams, randomize,\nissue discount cards.', 'orange'], ['03', 'Week 3 · Mon–Sun', 'Intern Food Week', 'Own-money purchases.\nLog, reconcile and audit.', 'lime'], ['04', 'Week 4 · Tue, 6 pm', 'Surprise recall', 'Parallel rooms; phones aside.\nDebrief after all sessions.', 'blue']].map(([n, when, title, text, tone]) => /*#__PURE__*/_jsxs("div", {
-            className: `time-step ${tone}`,
-            children: [/*#__PURE__*/_jsx("span", {
-              className: "step-number",
-              children: n
-            }), /*#__PURE__*/_jsx("span", {
-              className: "eyebrow",
-              children: when
-            }), /*#__PURE__*/_jsx("h3", {
-              children: title
-            }), /*#__PURE__*/_jsx("p", {
-              children: text
-            })]
-          }, n))
-        }), /*#__PURE__*/_jsxs("div", {
-          className: "recall-order",
-          "data-reveal": true,
-          children: [/*#__PURE__*/_jsx("span", {
-            className: "eyebrow",
-            children: "Recall order"
-          }), /*#__PURE__*/_jsxs("p", {
-            children: ["Total \u2192 Count \u2192 ", /*#__PURE__*/_jsx("b", {
-              children: "Free purchase list"
-            }), " \u2192 Day-by-day prompts \u2192 Revised total"]
-          }), /*#__PURE__*/_jsx("span", {
-            className: "figure-note",
-            children: "Debrief after all sessions finish."
-          })]
-        })]
-      })), frame(7, /*#__PURE__*/_jsxs(_Fragment, {
-        children: [/*#__PURE__*/_jsxs("div", {
-          className: "outcome-top",
-          children: [/*#__PURE__*/_jsxs(Heading, {
-            sub: "Primary outcome / Free purchase recall",
-            children: ["DID THE PURCHASE", /*#__PURE__*/_jsx("br", {}), "COME BACK TO MIND?"]
-          }), /*#__PURE__*/_jsx(Tag, {
-            tone: "blue",
-            children: "Memory \u2260 total estimation"
-          })]
-        }), /*#__PURE__*/_jsxs("div", {
-          className: "outcome-content",
-          children: [/*#__PURE__*/_jsx("div", {
-            className: "recall-figure",
-            "data-reveal": true,
-            children: /*#__PURE__*/_jsx(Recall, {})
-          }), /*#__PURE__*/_jsxs("div", {
-            className: "scoring",
-            "data-reveal": true,
-            children: [/*#__PURE__*/_jsx("h3", {
-              children: "A correct match needs"
-            }), /*#__PURE__*/_jsxs("div", {
-              children: [/*#__PURE__*/_jsx("span", {
-                children: "01"
-              }), " Correct outlet"]
-            }), /*#__PURE__*/_jsxs("div", {
-              children: [/*#__PURE__*/_jsx("span", {
-                children: "02"
-              }), " Correct item category"]
-            }), /*#__PURE__*/_jsxs("div", {
-              children: [/*#__PURE__*/_jsx("span", {
-                children: "03"
-              }), " Day within \xB11 day"]
-            }), /*#__PURE__*/_jsxs("p", {
-              children: ["Two blinded coders.", /*#__PURE__*/_jsx("br", {}), "Zero purchases: recall rate undefined."]
-            })]
-          })]
-        })]
-      })), frame(8, /*#__PURE__*/_jsxs(_Fragment, {
-        children: [/*#__PURE__*/_jsxs(Heading, {
-          children: ["THE SUPPORTING", /*#__PURE__*/_jsx("br", {}), "MEASURES."]
-        }), /*#__PURE__*/_jsx("div", {
-          className: "measures-grid",
-          children: [['H2', 'Total-estimate error', 'Absolute log-ratio error differs between payment modes.', 'orange'], ['H3', 'Signed estimation error', 'UPI payers underestimate total spending more.', 'paper'], ['E1', 'Cue-associated gain', 'Change after day-by-day prompts. Fixed order limits inference.', 'blue'], ['E2', 'Possible mechanisms', 'App use, cash conversions and spending personality.', 'lime']].map(([n, title, text, tone]) => /*#__PURE__*/_jsxs("div", {
-            className: `measure ${tone}`,
-            "data-reveal": true,
-            children: [/*#__PURE__*/_jsx("span", {
-              className: "measure-code",
-              children: n
-            }), /*#__PURE__*/_jsxs("div", {
-              children: [/*#__PURE__*/_jsx("h3", {
-                children: title
-              }), /*#__PURE__*/_jsx("p", {
-                children: text
-              })]
-            }), n === 'E1' || n === 'E2' ? /*#__PURE__*/_jsx("span", {
-              className: "measure-note",
-              children: "EXPLORATORY"
-            }) : null]
-          }, title))
-        }), /*#__PURE__*/_jsx("div", {
-          className: "small-footer",
-          "data-reveal": true,
-          children: "H1 is primary. Holm correction across H2 and H3. Cue gain and mechanisms are exploratory."
-        })]
-      })), frame(9, /*#__PURE__*/_jsxs(_Fragment, {
-        children: [/*#__PURE__*/_jsxs("div", {
-          className: "analysis-layout",
-          children: [/*#__PURE__*/_jsxs("div", {
-            className: "analysis-copy",
-            "data-reveal": true,
-            children: [/*#__PURE__*/_jsx(Tag, {
-              children: "Planned, not observed"
-            }), /*#__PURE__*/_jsxs("h2", {
-              children: ["ENOUGH TEAMS.", /*#__PURE__*/_jsx("br", {}), "THE RIGHT MODEL."]
-            }), /*#__PURE__*/_jsxs("div", {
-              className: "analysis-n",
-              children: [/*#__PURE__*/_jsx(CountUp, {
-                to: 350,
-                duration: 1.1
-              }), /*#__PURE__*/_jsxs("span", {
-                children: ["interns targeted", /*#__PURE__*/_jsx("br", {}), "at one host college"]
-              })]
-            }), /*#__PURE__*/_jsxs("p", {
-              children: ["Analyze by assigned mode.", /*#__PURE__*/_jsx("br", {}), "Account for team and participant clustering."]
-            }), /*#__PURE__*/_jsxs("p", {
-              className: "small-copy",
-              children: ["Purchase-level logistic mixed model.", /*#__PURE__*/_jsx("br", {}), "Report effect size + 95% confidence interval."]
-            })]
-          }), /*#__PURE__*/_jsx("div", {
-            className: "chart-panel",
-            "data-reveal": true,
-            children: /*#__PURE__*/_jsx(PowerPlot, {})
-          })]
-        }), /*#__PURE__*/_jsx("div", {
-          className: "analysis-band orange",
-          "data-reveal": true,
-          children: "Confirm cohort capacity and power in the pilot. Add team pairs, or state the minimum detectable effect."
-        })]
-      })), frame(10, /*#__PURE__*/_jsxs(_Fragment, {
-        children: [/*#__PURE__*/_jsxs(Heading, {
-          children: ["WHAT THIS DESIGN", /*#__PURE__*/_jsx("br", {}), "CAN \u2014 AND CAN\u2019T \u2014 SAY."]
-        }), /*#__PURE__*/_jsxs("div", {
-          className: "limits-layout",
-          children: [/*#__PURE__*/_jsxs("div", {
-            className: "limits-list",
-            "data-reveal": true,
-            children: [/*#__PURE__*/_jsxs("div", {
-              children: [/*#__PURE__*/_jsx("span", {
-                children: "01"
-              }), /*#__PURE__*/_jsx("h3", {
-                children: "Records & cash conversions"
-              }), /*#__PURE__*/_jsx("p", {
-                children: "Both may help reconstruct a spending total."
-              })]
-            }), /*#__PURE__*/_jsxs("div", {
-              children: [/*#__PURE__*/_jsx("span", {
-                children: "02"
-              }), /*#__PURE__*/_jsx("h3", {
-                children: "A specific population"
-              }), /*#__PURE__*/_jsx("p", {
-                children: "One college. Summer interns. Seven spending days."
-              })]
-            }), /*#__PURE__*/_jsxs("div", {
-              children: [/*#__PURE__*/_jsx("span", {
-                children: "03"
-              }), /*#__PURE__*/_jsx("h3", {
-                children: "Selection & fixed order"
-              }), /*#__PURE__*/_jsx("p", {
-                children: "A 25% discount, dropout and fixed cue order need care."
-              })]
-            })]
-          }), /*#__PURE__*/_jsxs("div", {
-            className: "ethics-panel lime",
-            "data-reveal": true,
-            children: [/*#__PURE__*/_jsx("span", {
-              className: "eyebrow",
-              children: "Before data collection"
-            }), /*#__PURE__*/_jsxs("h3", {
-              children: ["CONSENT.", /*#__PURE__*/_jsx("br", {}), "AUDIT.", /*#__PURE__*/_jsx("br", {}), "DEBRIEF."]
-            }), /*#__PURE__*/_jsxs("p", {
-              children: ["Independent recruitment. Disclosed logging.", /*#__PURE__*/_jsx("br", {}), "No internship consequences. Withdrawal rights."]
-            }), /*#__PURE__*/_jsxs("div", {
-              className: "seal",
-              children: ["PROPOSAL", /*#__PURE__*/_jsx("br", {}), "ONLY \u2197"]
-            })]
-          })]
-        })]
-      })), frame(11, /*#__PURE__*/_jsxs(_Fragment, {
-        children: [/*#__PURE__*/_jsxs(Heading, {
-          children: ["WHAT EITHER OUTCOME", /*#__PURE__*/_jsx("br", {}), "WOULD MEAN."]
-        }), /*#__PURE__*/_jsxs("div", {
-          className: "outcomes-grid",
-          children: [/*#__PURE__*/_jsxs("div", {
-            className: "outcome-path orange",
-            "data-reveal": true,
-            children: [/*#__PURE__*/_jsx("span", {
-              className: "eyebrow",
-              children: "If a mode difference appears"
-            }), /*#__PURE__*/_jsxs("h3", {
-              children: ["REPLICATE.", /*#__PURE__*/_jsx("br", {}), "THEN TEST WHY."]
-            }), /*#__PURE__*/_jsxs("p", {
-              children: ["Randomize record access or notifications.", /*#__PURE__*/_jsx("br", {}), "Test other populations and longer delays."]
-            }), /*#__PURE__*/_jsx("span", {
-              className: "path-arrow",
-              children: "\u2197"
-            })]
-          }), /*#__PURE__*/_jsxs("div", {
-            className: "outcome-path blue",
-            "data-reveal": true,
-            children: [/*#__PURE__*/_jsx("span", {
-              className: "eyebrow",
-              children: "If no clear difference appears"
-            }), /*#__PURE__*/_jsxs("h3", {
-              children: ["LOOK AT", /*#__PURE__*/_jsx("br", {}), "THE PRECISION."]
-            }), /*#__PURE__*/_jsxs("p", {
-              children: ["A narrow interval near zero differs", /*#__PURE__*/_jsx("br", {}), "from a wide, inconclusive interval."]
-            }), /*#__PURE__*/_jsx("span", {
-              className: "path-arrow",
-              children: "\u2197"
-            })]
-          })]
-        }), /*#__PURE__*/_jsxs("div", {
-          className: "closing-bar lime",
-          "data-reveal": true,
-          children: [/*#__PURE__*/_jsx("p", {
-            children: "Nonsignificance alone does not establish equivalence."
-          }), /*#__PURE__*/_jsx("span", {
-            className: "reference-key",
-            children: "References available with R"
-          })]
-        })]
-      }))]
+      })), frame(7, /*#__PURE__*/_jsx(ResearchSlide, {
+        index: 7
+      }), 'research-slide layout-7'), frame(8, /*#__PURE__*/_jsx(ResearchSlide, {
+        index: 8
+      }), 'research-slide layout-8'), frame(9, /*#__PURE__*/_jsx(ResearchSlide, {
+        index: 9
+      }), 'research-slide layout-9'), frame(10, /*#__PURE__*/_jsx(ResearchSlide, {
+        index: 10
+      }), 'research-slide layout-10'), frame(11, /*#__PURE__*/_jsx(ResearchSlide, {
+        index: 11
+      }), 'research-slide layout-11'), frame(12, /*#__PURE__*/_jsx(ResearchSlide, {
+        index: 12
+      }), 'research-slide layout-12'), frame(13, /*#__PURE__*/_jsx(ResearchSlide, {
+        index: 13
+      }), 'research-slide layout-13'), frame(14, /*#__PURE__*/_jsx(ResearchSlide, {
+        index: 14
+      }), 'research-slide layout-14')]
     }), /*#__PURE__*/_jsx(AnimatePresence, {
       children: panel && /*#__PURE__*/_jsx(motion.div, {
         className: "modal-backdrop",
@@ -1160,11 +1117,11 @@ function App() {
               children: [/*#__PURE__*/_jsx("strong", {
                 children: "Study protocol \xB7 16 November 2026"
               }), /*#__PURE__*/_jsx("span", {
-                children: "Cash vs UPI Recall: Intern Field Experiment Design. 18 pages. Adapted to one college as requested. Planning scenarios are calculated from the protocol assumptions; cohort capacity and power remain to be confirmed."
+                children: "Cash vs UPI Recall: Intern Field Experiment Design. 18 pages. Adapted to one college as requested. The revised presentation supersedes the PDF on individual matching, equal completion rewards, removal of discounts and pending recall metrics."
               })]
             }), /*#__PURE__*/_jsx("p", {
               className: "source-credit",
-              children: "Receipt-printer geometry built with Anatomy. Number animation: React Bits CountUp. Motion: GSAP, Lenis and Motion."
+              children: "Payment objects, matching boards, vendor counter and recall worksheet generated with the Anatomy toolkit. Number animation: React Bits CountUp. Motion: GSAP, Lenis and Motion."
             })]
           })]
         })
@@ -1173,7 +1130,7 @@ function App() {
       className: "sr-only",
       role: "status",
       "aria-live": "polite",
-      children: ["Slide ", active + 1, " of 12: ", titles[active]]
+      children: ["Slide ", active + 1, " of ", titles.length, ": ", titles[active]]
     })]
   });
 }
