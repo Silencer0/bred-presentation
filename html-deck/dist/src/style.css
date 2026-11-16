@@ -86,3 +86,10 @@
 .research-slide .study-body{margin-bottom:4%}
 
 .sampling-method{margin:0 4%;padding:18px 0;border-top:1px solid;border-bottom:1px solid;display:grid;grid-template-columns:1fr 1.35fr;gap:32px;align-items:start}.sampling-method h3{font-size:32px;font-weight:600;line-height:1.15;letter-spacing:-.025em;font-synthesis:weight}.sampling-method p{font-size:21px;line-height:1.4}@media(min-width:651px) and (max-width:1200px){.sampling-method h3{font-size:26px}.sampling-method p{font-size:17px}.sampling-method{gap:24px;padding:14px 0}}@media(max-width:650px){.sampling-method{grid-template-columns:1fr;gap:8px;padding:12px 0}.sampling-method h3{font-size:20px}.sampling-method p{font-size:12px}}
+
+.reliability-principle .coder-pair{margin-top:16px;margin-bottom:0}@media(max-width:650px){.reliability-principle .coder-pair{margin-top:10px}}
+/* Larger main content text for presentation viewing. */
+:root{--study-body-size:23px}
+@media(min-width:1201px){.sampling-method p,.safeguard-row p,.week-row p,.test-row p{font-size:23px!important;line-height:1.4}}
+@media(min-width:651px) and (max-width:1200px){:root{--study-body-size:19px}.sampling-method p,.safeguard-row p,.week-row p,.test-row p{font-size:19px!important;line-height:1.35}}
+@media(max-width:650px){:root{--study-body-size:13px}.sampling-method p,.safeguard-row p,.week-row p,.test-row p{font-size:13px!important}}
