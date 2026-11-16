@@ -11,3 +11,5 @@ Download and open [presentation.html](html-deck/presentation.html) in a current 
 - `output/`: archived Canva-era presenter guide and review image. These describe an earlier study version and are retained as project history.
 
 The presentation uses React, GSAP, Lenis, Motion, React Bits CountUp, and the Anatomy toolkit. Dependencies and fonts are self-hosted in `html-deck/public/`.
+
+See [context.md](context.md) for study decisions, design rules, slide order and the editing workflow.

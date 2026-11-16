@@ -1187,6 +1187,12 @@ function App() {
             children: ["THE PURCHASES", /*#__PURE__*/_jsx("br", {}), "WE REMEMBER."]
           }), /*#__PURE__*/_jsx("p", {
             children: "UPI or Cash: Does mode of payment affect recall of spending?"
+          }), /*#__PURE__*/_jsxs("div", {
+            className: "presenter-names",
+            children: ["Anivarth Varma P ", /*#__PURE__*/_jsx("span", {
+              "aria-hidden": "true",
+              children: "\xB7"
+            }), " Shreyash Chandak"]
           })]
         }), /*#__PURE__*/_jsxs("div", {
           className: "cover-art memory-art",
