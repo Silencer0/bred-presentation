@@ -2,11 +2,12 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { createRoot } from 'react-dom/client';
 import { AnimatePresence, motion } from 'motion/react';
 import { researchArt } from './research-art.js';
+import { paymentSuccessVideo, paymentSuccessPoster } from './payment-success.js';
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
-const titles = ["The purchases we remember", "Literature review", "Research gap and question", "Independent and dependent variables", "Baseline testing and matching", "Why recruit newcomers?", "Random allocation", "Payment conditions and rewards", "Independent transaction records", "One-week procedure", "Confounders and safeguards", "Validity and reliability", "Tuesday memory test", "What this experiment tells us", "Limitations and caveats"];
-const timings = [15, 65, 45, 35, 65, 25, 40, 40, 45, 40, 40, 45, 20, 45, 35];
-const notes = ["A field study of payment mode and delayed memory. Both groups receive the same completion reward.", "Payment methods can change how expenses are encoded and reconstructed. Soman · 2001 Rehearsal and immediacy Writing or actively processing a payment amount and immediate wealth depletion affect how past payments influence later spending. This motivates testing payment-related memory, rather than assuming every digital mode behaves alike. Gafeeva et al. · 2018 Payment transparency The study examines how multifunctional payment cards can reduce payment transparency. Its card context motivates our question but does not establish a cash-versus-UPI effect. Srivastava & Raghubir · 2002 Reconstruction of expenses Breaking expense estimates into categories can change memory-based credit-card estimates. Unaided recall and prompted reconstruction should therefore be distinguished. Background: spending decisions depend partly on what previous payments bring to mind. Citations open the original sources.", "Can payment mode change delayed purchase memory in everyday campus spending? The gap Cash versus UPI in the field The cited studies do not settle delayed cash-versus-UPI purchase recall against independently recorded transactions in this setting. Research question Does assigned payment mode affect recall? Compare newcomers randomly assigned to cash or UPI during the same one-week spending period. Hypotheses H0: no difference · H1: a difference Use a two-sided hypothesis: physical handling may favor cash, while digital records and notifications may favor UPI. The exact outcome definition will be finalized before data collection. Contribution: a randomized field comparison with vendor records as an independent transaction benchmark.", "One manipulated factor, with two levels. A between-subjects field experiment. Independent variable Assigned payment mode Cash only versus UPI only for eligible campus purchases during the experiment week. Each participant experiences one condition. Dependent variable Delayed purchase-memory performance Tuesday recall compared with the recorded purchases. Exact test, scoring rules and primary metric are pending your specification. Operationalization Assignment is distinct from actual use Record assigned mode, observed transaction mode and deviations separately. One factor with two levels is not a factorial design. Construct: memory for actual purchase episodes, distinguished from estimating an amount using known prices.", "Measure likely sources of imbalance before revealing payment assignments. Memory A neutral delayed-memory task Use standardized instructions, exposure time and delay. Score recall of non-shopping material to avoid rehearsing the later purchase task. Spending habits Prior spending and cash use With consent, use prior UPI history for digital spending and a brief retrospective survey for cash expenditure and cash share. UPI records alone cannot establish cash spending. Masking the objective Additional tests Include additional attention, numeracy and lifestyle tasks so participants are less likely to guess that purchase recall is the dependent variable. This reduces demand characteristics; check for hypothesis guessing after recall and debrief participants. Match on baseline memory, mean expenditure and habitual cash share; randomize within pairs. Matching improves balance but does not guarantee equal means.", "Prior price knowledge can blur the distinction between memory and reconstruction. The threat Familiar prices make totals easier to infer A long-term resident may reconstruct expenditure from familiar menu prices without remembering the payment amount. Eligibility restriction New to this college Recruit adult newcomers who can use both cash and UPI. Screen prior campus residence, outlet familiarity and prior visits before allocation. Remaining caveat Newcomers also learn prices Keep the spending window identical and record baseline familiarity. Newcomer status reduces this threat; it does not eliminate it. Internal validity improves through restriction, at the cost of narrower population generalizability.", "Match individual participants, then randomly assign one person in each pair to each mode. Recruitment is voluntary convenience sampling, not random sampling. Conceal allocation until baseline measurement and enrollment are complete.", "Use personal money. No discount. The same reward rule in both conditions. Cash condition Use only cash Use cash for eligible purchases during the seven-day experiment. Vendors record expenditure without asking participants to keep a diary. UPI condition Use only UPI Use UPI for the same eligible purchases and period. Consent-based transaction records are reconciled with vendor logs. Equal incentive Reward completion in both groups Participants receive discounts at campus vendors by providing their student ID. This allows vendors to link each purchase to the participant and record their expenditure. Define eligible transactions, emergencies and mixed-mode purchases before recruitment. Record deviations without deleting assigned participants from the primary comparison.", "Partner with all campus vendors to record both payment conditions. Vendor logging A common transaction record Record coded participant ID, date/time, vendor, item, amount and payment mode for each purchase. Keep the capture process the same for cash and UPI. Avoid memory rehearsal No participant spending diary Asking cash users to write down purchases would add encoding and rehearsal to that condition. Vendor recording keeps this task out of participants’ routines. Record quality Reconcile and audit daily Check missing IDs, duplicate entries, refunds, split payments and group orders. Reconcile UPI records and vendor totals; audit cash logs against sales records where feasible. All-vendor coverage is a study requirement to arrange, not a partnership already secured. Off-campus cash expenditure remains harder to verify.", "A common exposure period and a common Tuesday recall session. Before the week Consent → baseline → match → randomize Train vendors, pilot record capture and issue coded participant identifiers. Explain logging and assigned-mode requirements without revealing the recall hypothesis. Monday–Sunday Seven days of recorded spending Record cash and UPI purchases for one week only. Apply identical participant contact and compliance procedures to both conditions. Tuesday Recall before records are opened Run the same test at the same time, without phones or transaction histories available during testing. Collect suspicion and compliance checks, then debrief. Tuesday is two days after the final spending day. Earlier purchases have longer recall delays, so retain transaction timestamps.", "Protect the comparison while keeping ordinary purchases as natural as possible. Before assignment Selection and baseline differences Recruit both conditions from the same eligible cohort. Match on prespecified baseline measures and conceal allocation until enrollment and baseline scoring are complete. During spending Unequal treatment and contamination Keep rewards, instructions, logging and contact equal. Record mode switching, shared orders, price changes and cross-group discussion. Digital histories remain a real-world feature of UPI. During recall Experimenter and demand effects Standardize the test environment; mask assessors and coders to assignment where possible. Keep phones aside, avoid leading prompts and debrief after testing. Randomization addresses confounding in expectation. Differential attrition, noncompliance and record gaps can still threaten internal validity.", "Construct validity: We want to measure memory of actual purchases, rather than the ability to reconstruct totals from familiar prices. Recruiting newcomers reduces prior price knowledge; comparing unaided recall with vendor records checks memory against what was actually purchased. Reliability: Split-half reliability: divide comparable baseline-memory items into two balanced halves and correlate participants’ scores across them. This checks internal consistency within a single assessment, provided both halves measure the same memory ability. Internal and external validity: Baseline matching, random assignment and equal procedures help isolate the effect of payment mode. However, volunteers from one college do not represent all consumers. Findings apply most directly to similar newcomers making everyday campus purchases.", "Test details and metrics will be finalized next. Fixed already Delayed recall after the spending week All participants take the same Tuesday test under standardized conditions and without consulting transaction histories during the task. Pending your details Task and scoring specification Finalize prompts, response format, time limit, purchase-matching rules, primary outcome and any secondary measures. Do not treat the previous deck’s formulas as decided. Before collection Freeze the scoring and analysis rules Pilot clarity and difficulty; prespecify missing-record handling, zero purchases, exclusions and how noncompliance will be reported. No results are shown. The outcome metric and memory-test procedure are intentionally pending.", "If cash recall is better: Cash may make purchases more memorable. Better recall in the cash group would support the idea that physically handling money helps people remember purchases. However, the result alone would not explain why cash users remember more. If UPI recall is better: Digital payment may support memory. Better recall in the UPI group would show that digital payment need not weaken purchase memory. Transaction histories and notifications are possible explanations to test separately. If neither group recalls better: No clear advantage under these conditions. A precise result near zero would suggest little difference in this setting. A wide confidence interval would leave the question unresolved. The study could guide later tests of spending summaries or notifications in payment apps.", "Limited external validity and generalizability: Recruiting volunteers from one college risks sampling bias and limits population validity. Findings cannot be assumed to generalize to other colleges, age groups or experienced campus residents. Baseline matching improves group comparability, not sample representativeness. Threats to ecological validity: Assigned payment modes and student-ID discounts differ from unrestricted everyday spending. Knowing purchases are recorded may also change behavior: the Hawthorne effect. These features limit how closely the study reflects normal purchasing. Threats to internal validity: Noncompliance, differential attrition and incomplete vendor records can distort the comparison. Shared payments and cross-group discussion may contaminate conditions. Random assignment reduces baseline confounding but does not remove these post-assignment threats. Ethical safeguards remain necessary: consent for logging, minimal financial data, debriefing and withdrawal rights. One week also limits conclusions about longer-term behavior; replicate across cohorts, campuses and time periods."];
-const refs = [['Soman, D. (2001)', 'Effects of payment mechanism on spending behavior: The role of rehearsal and immediacy of payments. Journal of Consumer Research, 27(4), 460–474.', 'https://doi.org/10.1086/319621'], ['Gafeeva, R., Hoelzl, E., & Roschk, H. (2018)', 'What else can your payment card do? Multifunctionality of payment modes can reduce payment transparency. Marketing Letters, 29, 61–72.', 'https://doi.org/10.1007/s11002-017-9445-2'], ['Srivastava, J., & Raghubir, P. (2002)', 'Debiasing using decomposition: The case of memory-based credit card expense estimates. Journal of Consumer Psychology, 12(3), 253–264.', 'https://doi.org/10.1207/S15327663JCP1203_07']];
+const titles = ["The purchases we remember", "Introduction: background and motivation", "Literature review", "Research gap and question", "Independent and dependent variables", "Baseline testing and matching", "Saturday baseline session", "Why recruit newcomers?", "Matched-pair allocation", "Payment conditions and rewards", "Independent transaction records", "One-week procedure", "Confounders and safeguards", "Validity and reliability", "Monday recall test", "Item matching and recall metrics", "Analysis and unequal purchase counts", "What this experiment tells us", "Limitations and caveats", "Ethical limitations and safeguards", "Thank you", "References"];
+const timings = [10, 25, 30, 25, 15, 45, 45, 15, 35, 20, 30, 25, 25, 30, 40, 45, 45, 30, 25, 35, 5, 0];
+const notes = ["A field study of payment mode and delayed memory. Both groups receive the same completion reward.", "Motivation: people need an accurate picture of past purchases to monitor expenditure. Cash and UPI differ in the cues surrounding payment. Cash involves counting notes and receiving change; UPI provides on-screen confirmations and transaction histories. These are possible influences on memory, not established effects in this study. We test delayed recall of real purchases using independent vendor records, rather than assuming one payment mode helps memory more.", "Rehearsal and immediacy: Writing or actively processing a payment amount and immediate wealth depletion affect how past payments influence later spending. This motivates testing payment-related memory, rather than assuming every digital mode behaves alike. Payment transparency: The study examines how multifunctional payment cards can reduce payment transparency. Its card context motivates our question but does not establish a cash-versus-UPI effect. Reconstruction of expenses: Breaking expense estimates into categories can change memory-based credit-card estimates. Unaided recall and prompted reconstruction should therefore be distinguished.", "The research gap: The cited studies do not settle cash-versus-UPI recall of independently logged item lines after one week of real purchases. Research question: Does assigned payment mode affect the probability of recalling a purchased item? Hypotheses: H1: item recall differs by mode. H2: absolute total-spend error differs. H3: UPI produces more negative signed spend error. Correct across H1–H3 using Holm.", "Assigned payment mode: Cash only versus UPI only for eligible campus purchases during the experiment week. Each participant experiences one condition. Delayed purchase-memory performance: Delayed recall is operationalized as the modeled probability that a logged item line is strictly matched in the Monday test. Assignment is distinct from actual use: Record assigned mode, observed transaction mode and deviations separately. One factor with two levels is not a factorial design.", "Memory composite · baseline memory: baseline memory = [z(RAVLT trials 1–5 total) + z(ROCF delayed)] ÷ 2. Standardize within our sample; score ranges are 0–75 and 0–36. Spendthrift–Tightwad · spending tendency: Use the published 4-item spendthrift–tightwad scale scale (Rick et al., 2008). Reverse-score the “trouble spending” item. Use the 4–26 total continuously, without categories. Habitual cash use · habitual cash use: Number of cash payments among the last 10 payments: 0–10. weekly cash-spending share (weekly cash spending share) checks habitual cash use. main payment app (main UPI app) is descriptive only.", "Group paper session, planned session about 55 minutes. RAVLT five learning trials, recorded audio and fixed written-response times: 10 min. ROCF copy: 5 min. Questionnaire: 20 min. ROCF delayed: 5 min. RAVLT delayed: 2 min. Both delayed tests are announced to avoid teaching participants to anticipate surprise tests. Three deviations: group/written RAVLT, announced ROCF delayed recall, announced RAVLT delayed recall. The team chose the 30-minute ROCF delay. Add a 10-minute neutral non-rehearsal buffer after the questionnaire: the blocks now total 52 minutes, budgeted as about 55. ROCF copy ends at minute15 and delayed recall begins at minute45. Record actual intervals; the adapted RAVLT delay also needs reporting. TIPI 10 items, sleep3, phone habits3, food4, commute2, internship expectations3; spendthrift–tightwad scale sits between TIPI and sleep. habitual cash use last10 cash count, weekly cash-spending share weekly cash share, main payment app app; omit tracking-status item and history-checking item. Pilot ceiling shares RAVLTtotal≥70 and ROCFdelayed≥34, reliability of each, and their correlation. ROCF copy flags drawing/perception difficulties; count/report, do not exclude. RAVLT delayed recall is a covariate only; primary matching composite uses the learning total to reduce ceiling concerns. Drop ROCF only under a prespecified pilot decision if it does not predict pilot recall; then use RAVLT alone.", "Familiar prices make totals easier to infer: A long-term resident may reconstruct expenditure from familiar menu prices without remembering the payment amount. New to this college: Recruit adult newcomers who can use both cash and UPI. Screen prior campus residence, outlet familiarity and prior visits before allocation. Newcomers also learn prices: Keep the spending window identical and record baseline familiarity. Newcomer status reduces this threat; it does not eliminate it.", "Convenience recruitment of eligible newcomers. Mahalanobis distance on sample-z-scored baseline memory, spending tendency, habitual cash use, using sample covariance. Optimal nonbipartite pairing with nbpMatching. No tracking-status exact matching: tracking-status item and history-checking item are dropped. Odd participant: leave the least-matchable participant unpaired, retaining them only for sensitivity analysis; they still participate. Report pairs above the 95th percentile of distance. Computer coin flip within each pair, conceal until Sunday. Check balance on baseline memory, spending tendency, habitual cash use; if any SMD exceeds .2, rerandomize up to three times using a prespecified rule. Keep baseline memory,spending tendency,habitual cash use in every analysis. Clarify whether the odd unpaired participant receives an independent assignment before inclusion in any mode-based sensitivity analysis.", "Use only cash: Use personal money and cash for eligible personal orders during the seven-day Food Week. No participant spending diary. Use only UPI: Use personal money and UPI for the same eligible purchases and period. Vendor records capture both payment modes. Participant-ID discounts: Both groups receive 25% off personal orders with their participant ID. The discount is uncapped; budget from pilot spending. Both groups retain the same completion-reward rule.", "One item line = one record: “2 samosas + 1 chai” creates two item lines, each with quantity. Staff tap menu items on outlet tablets. An independent ground truth: Log participant ID, outlet, item code, quantity, menu price, amount paid after discount, timestamp and payment mode. Participants do not write spending diaries. A codebook before collection: Use all four outlet menus to fix item names, six categories and accepted synonyms. Reconcile records daily; report spend and item count by mode descriptively. Item categories fixed before study: hot drinks; cold drinks/juices; savoury snacks; sweets/bakery; meals; other. The logged unit is an item line, retaining quantity, not one observation per physical unit.", "Saturday → Sunday: Saturday baseline and questionnaire; form pairs afterward. Computer allocation stays concealed until Sunday. Monday–Sunday · Seven spending days: Record personal cash and UPI purchases at four outlets for one week. Apply the same 25% participant-ID discount in both conditions; no cap. Next Monday · 6 pm recall: A 20-minute digital test, without menus or transaction histories. Lock initial totals before day-by-day recall. No make-up session.", "Selection and baseline differences: Optimal matching on baseline memory, spending tendency and habitual cash use, followed by a computer coin flip within pairs. Prespecify balance checks; keep baseline memory, spending tendency and habitual cash use in every analysis model. Noncompliance and contamination: Keep rewards, discounts, instructions and logging equal. Record mode switching, group payments and cross-group discussion rather than silently excluding them. Demand characteristics and rehearsal: Announce baseline delayed tests; hide spendthrift–tightwad scale/cash items among decoys. Keep purchase recall unannounced. Test everyone together; record suspicion afterward and debrief.", "Construct validity: Use announced baseline tests, but unaided purchase recall against vendor records as the outcome. Check ceiling rates, ROCF copy performance and whether the two memory measures relate to pilot recall. Reliability: Two trained scorers, blinded to participant information, score ROCF using the 36-point Osterrieth/Taylor system. Report ICC and average their scores. For final item/day coding, report Cohen’s κ between blinded coders. Internal and external validity: Matching and concealed randomization support comparability. One college and convenience recruitment limit generalizability. The modified group/written and announced baseline tests must be reported as procedural deviations.", "1 · Submit and lock totals: First report total Food Week spending (₹) and the number of separate items purchased. Once submitted, these answers cannot be changed. 2 · Reconstruct seven days: For each entry: outlet, specific item, whole-rupee amount paid after discount, and confidence (Sure / Guessing). Seven dated tabs cover Monday–Sunday. One standardized form: Reject generic item labels; no menus, no “anything else?” prompt and no return to totals. Use an example dish absent from all menus. Every field is required. Reject generic item-only labels: meal, food, snack, breakfast, lunch, dinner, drink, juice, coffee, tea, something. Confidence is separate from objective correctness: a Guessing entry is scored against the same record criteria as a Sure entry; this allows nonzero guessing accuracy and makes the calibration ratio meaningful. Actual dates and the four outlet names must be inserted before running the test.", "Unit: a logged item line with quantity. Strict primary match is same outlet, exact item or accepted synonym, day±1. Lenient is same outlet/category/day±1. Hungarian one-to-one assignment maximizes number of matches. Two coders code all entries blind to mode after removal of revealing words; report Cohen kappa for item coding and day reading. Primary item recall: modeled probability a logged line is strictly recalled. Precision=matched entries/all entries; F1=2PR/(P+R). Recall above chance: strict recall minus a prespecified score against other participants’ logs drawn from both groups. Specify donor selection, normalization and number of permutations before claiming complete protection from over-listing; cancellation is not guaranteed for every list. Secondary metrics: count error=Stage1count−actual item-line count; strict-match median absolute price error=median |recalled−paid|/paid, and signed version; day accuracy=exact-day share among strict matches. Exploratory: sumStage2 amounts−Stage1total; confidence calibration=match rate Sure / match rate Guessing, with zero-denominator rule prespecified. Report repeated items bought on≥2days vs one-off and lenient recall. Define denominators and zero-purchase/zero-entry/zero-price handling before analysis; do not silently exclude them.", "H1: item-level logistic mixed model recalled ~ mode + baseline memory + spending tendency + habitual cash use + (1|pair) + (1|participant). Report mode odds ratio and average probability difference. Pair random effects do not make individuals with few purchases equivalent to those with many; participant dependence is modeled and precision depends on clustering and outcomes. Person plots use model-based shrunken estimates, not arbitrary raw-percentage rankings. Purchase count is post-treatment; omit it from the primary model. Secondary log-count/repeat adjustment is descriptive only. Sensitivities: each person weighted1/itemcount, lenient matching, recall above chance, descriptive post-treatment adjustment. Spend and count by mode descriptive, not confirmatory hypotheses. H2/H3 participant model error~mode+baseline memory+spending tendency+habitual cash use+(1|pair); error ln((Stage1total+10)/(actual+10)); H2absolute, H3signed with directional UPI-underestimation prediction. Holm across H1–H3. Exploratory mode×habitual cash use. No X/Y factors and no spending cap. Monday nonattendance: no makeup; Lee bounds only with monotone-selection and design assumptions justified, otherwise report missingness and additional sensitivities. Do not equate nonsignificance with equivalence.", "Cash may make purchases more memorable: Better recall in the cash group would support the idea that physically handling money helps people remember purchases. However, the result alone would not explain why cash users remember more. Digital payment may support memory: Better recall in the UPI group would show that digital payment need not weaken purchase memory. Transaction histories and notifications are possible explanations to test separately. No clear advantage under these conditions: A precise result near zero would suggest little difference in this setting. A wide confidence interval would leave the question unresolved. The study could guide later tests of spending summaries or notifications in payment apps.", "Limited external validity and generalizability: Recruiting volunteers from one college risks sampling bias and limits population validity. Findings cannot be assumed to generalize to other colleges, age groups or experienced campus residents. Baseline matching improves group comparability, not sample representativeness. Threats to ecological validity: Assigned payment modes and participant-ID discounts differ from unrestricted everyday spending. Knowing purchases are recorded may also change behavior: the Hawthorne effect. These features limit how closely the study reflects normal purchasing. Threats to internal validity: Noncompliance, differential attrition and incomplete vendor records can distort the comparison. Shared payments and cross-group discussion may contaminate conditions. Random assignment reduces baseline confounding but does not remove these post-assignment threats.", "Lecture basis: the Experiments lecture identifies lack of informed consent as a concern in field research. Each participant signs a detailed consent form covering procedures, payment-mode assignment, discount and reward conditions, data collected, burden, risks, contacts and withdrawal. The exact hypothesis and surprise-test timing involve partial disclosure, not complete disclosure of the study aim. Obtain institutional ethics review/approval for that withholding before recruitment; disclose purchase logging upfront, debrief after testing and allow withdrawal of identifiable data until the stated anonymization cutoff. Separate recruitment from internship supervision; refusal, withdrawal and low recall scores do not affect academic/internship standing. Do not make withdrawal financially punitive. Use coded participant IDs, a separate encrypted linkage file, restricted researcher access, a stated retention/deletion schedule and aggregate reporting; vendors should see only the ID and transaction details needed for logging. Do not collect PINs or unrelated banking history. Explain the expected time commitment and equal incentives; do not require purchases or induce participants to spend more. Testing is research, not clinical diagnosis. A signed consent form does not eliminate risk or by itself authorize undisclosed aims. These safeguards are proposed study procedures, not claims of ethics approval already granted.", "Thank the audience and invite questions. Closing uses the complete published Google Pay success recreation by Rohith R Krishnan from LottieFiles, followed by Thank you. It is not a real transaction.", "References supporting the literature, baseline instruments, personality decoy and analysis are listed here in author–date style with publication details and DOI or publisher links. Course handouts are identified as locally supplied lecture slides because no individual author or publication date was supplied. Modified baseline procedures differ from the cited standardized instruments. The closing animation source is credited in THIRD_PARTY_NOTICES.md, outside the academic bibliography."];
+const refs = [['Soman, D. (2001)', 'Effects of payment mechanism on spending behavior: The role of rehearsal and immediacy of payments. Journal of Consumer Research, 27(4), 460–474.', 'https://doi.org/10.1086/319621'], ['Gafeeva, R., Hoelzl, E., & Roschk, H. (2018)', 'What else can your payment card do? Multifunctionality of payment modes can reduce payment transparency. Marketing Letters, 29, 61–72.', 'https://doi.org/10.1007/s11002-017-9445-2'], ['Srivastava, J., & Raghubir, P. (2002)', 'Debiasing using decomposition: The case of memory-based credit card expense estimates. Journal of Consumer Psychology, 12(3), 253–264.', 'https://doi.org/10.1207/S15327663JCP1203_07'], ['Rick, S. I., Cryder, C. E., & Loewenstein, G. (2008)', 'Tightwads and Spendthrifts. Journal of Consumer Research, 34(6), 767–782.', 'https://doi.org/10.1086/523285'], ["Gosling, S. D., Rentfrow, P. J., & Swann, W. B., Jr. (2003)", "A very brief measure of the Big-Five personality domains. Journal of Research in Personality, 37(6), 504–528.", "https://doi.org/10.1016/S0092-6566(03)00046-1"], ["Schmidt, M. (1996)", "Rey Auditory Verbal Learning Test: A handbook. Western Psychological Services.", "https://marketplace.unl.edu/buros/rey-auditory-verbal-learning-test-a-handbook.html"], ["Meyers, J. E., & Meyers, K. R. (1995)", "Rey Complex Figure Test and Recognition Trial: Professional manual. Psychological Assessment Resources.", "https://www.parinc.com/products/RCFT"], ["Holm, S. (1979)", "A simple sequentially rejective multiple test procedure. Scandinavian Journal of Statistics, 6(2), 65–70.", "https://www.jstor.org/stable/4615733"], ["Lee, D. S. (2009)", "Training, wages, and sample selection: Estimating sharp bounds on treatment effects. The Review of Economic Studies, 76(3), 1071–1102.", "https://doi.org/10.1111/j.1467-937X.2009.00536.x"], ["Behavioral Research and Experiment Design course materials. (n.d.)", "Experiments; Sampling; Validity & Reliability [Lecture slides supplied for the course]. IIIT Hyderabad.", ""]];
 function Tag({
   children,
   tone = 'lime'
@@ -41,81 +42,55 @@ function Anatomy({
 const researchContent = {
   "1": {
     "title": "LITERATURE REVIEW",
-    "sub": "Payment methods can change how expenses are encoded and reconstructed.",
-    "rows": [["Soman · 2001", "Rehearsal and immediacy", "Writing or actively processing a payment amount and immediate wealth depletion affect how past payments influence later spending. This motivates testing payment-related memory, rather than assuming every digital mode behaves alike."], ["Gafeeva et al. · 2018", "Payment transparency", "The study examines how multifunctional payment cards can reduce payment transparency. Its card context motivates our question but does not establish a cash-versus-UPI effect."], ["Srivastava & Raghubir · 2002", "Reconstruction of expenses", "Breaking expense estimates into categories can change memory-based credit-card estimates. Unaided recall and prompted reconstruction should therefore be distinguished."]],
-    "foot": "Background: spending decisions depend partly on what previous payments bring to mind. Citations open the original sources."
+    "rows": [["Soman · 2001", "Rehearsal and immediacy", "Writing or actively processing a payment amount and immediate wealth depletion affect how past payments influence later spending. This motivates testing payment-related memory, rather than assuming every digital mode behaves alike."], ["Gafeeva et al. · 2018", "Payment transparency", "The study examines how multifunctional payment cards can reduce payment transparency. Its card context motivates our question but does not establish a cash-versus-UPI effect."], ["Srivastava & Raghubir · 2002", "Reconstruction of expenses", "Breaking expense estimates into categories can change memory-based credit-card estimates. Unaided recall and prompted reconstruction should therefore be distinguished."]]
   },
   "2": {
     "title": "RESEARCH GAP AND QUESTION",
-    "sub": "Can payment mode change delayed purchase memory in everyday campus spending?",
-    "rows": [["The gap", "Cash versus UPI in the field", "The cited studies do not settle delayed cash-versus-UPI purchase recall against independently recorded transactions in this setting."], ["Research question", "Does assigned payment mode affect recall?", "Compare newcomers randomly assigned to cash or UPI during the same one-week spending period."], ["Hypotheses", "H0: no difference · H1: a difference", "Use a two-sided hypothesis: physical handling may favor cash, while digital records and notifications may favor UPI. The exact outcome definition will be finalized before data collection."]],
-    "foot": "Contribution: a randomized field comparison with vendor records as an independent transaction benchmark."
+    "rows": [["The research gap", "The research gap", "The cited studies do not settle cash-versus-UPI recall of independently logged item lines after one week of real purchases."], ["Research question", "Research question", "Does assigned payment mode affect the probability of recalling a purchased item?"], ["Hypotheses", "Hypotheses", "H1: item recall differs by mode. H2: absolute total-spend error differs. H3: UPI produces more negative signed spend error. Correct across H1–H3 using Holm."]]
   },
   "3": {
     "title": "INDEPENDENT AND DEPENDENT VARIABLES",
-    "sub": "One manipulated factor, with two levels. A between-subjects field experiment.",
-    "rows": [["Independent variable", "Assigned payment mode", "Cash only versus UPI only for eligible campus purchases during the experiment week. Each participant experiences one condition."], ["Dependent variable", "Delayed purchase-memory performance", "Tuesday recall compared with the recorded purchases. Exact test, scoring rules and primary metric are pending your specification."], ["Operationalization", "Assignment is distinct from actual use", "Record assigned mode, observed transaction mode and deviations separately. One factor with two levels is not a factorial design."]],
-    "foot": "Construct: memory for actual purchase episodes, distinguished from estimating an amount using known prices."
+    "rows": [["Independent variable", "Assigned payment mode", "Cash only versus UPI only for eligible campus purchases during the experiment week. Each participant experiences one condition."], ["Dependent variable", "Delayed purchase-memory performance", "Delayed recall is operationalized as the modeled probability that a logged item line is strictly matched in the Monday test."], ["Operationalization", "Assignment is distinct from actual use", "Record assigned mode, observed transaction mode and deviations separately. One factor with two levels is not a factorial design."]]
   },
   "4": {
     "title": "BASELINE TESTING AND MATCHING",
-    "sub": "Measure likely sources of imbalance before revealing payment assignments.",
-    "rows": [["Memory", "A neutral delayed-memory task", "Use standardized instructions, exposure time and delay. Score recall of non-shopping material to avoid rehearsing the later purchase task."], ["Spending habits", "Prior spending and cash use", "With consent, use prior UPI history for digital spending and a brief retrospective survey for cash expenditure and cash share. UPI records alone cannot establish cash spending."], ["Masking the objective", "Additional tests", "Include additional attention, numeracy and lifestyle tasks so participants are less likely to guess that purchase recall is the dependent variable. This reduces demand characteristics; check for hypothesis guessing after recall and debrief participants."]],
-    "foot": "Match on baseline memory, mean expenditure and habitual cash share; randomize within pairs. Matching improves balance but does not guarantee equal means."
+    "rows": [["Memory composite", "Baseline memory composite", "Average the within-sample standardized verbal-learning total and delayed visual-recall score. Raw ranges: 0–75 and 0–36."], ["Spending tendency", "Spendthrift–Tightwad scale", "Use the published four-item scale (Rick et al., 2008). Reverse-score the “trouble spending” item; use the 4–26 total continuously."], ["Habitual cash use", "Habitual cash use", "Count cash payments among the last ten payments: 0–10. Weekly cash-spending share checks this measure. The main payment app is descriptive only."]]
   },
   "5": {
     "title": "WHY RECRUIT NEWCOMERS?",
-    "sub": "Prior price knowledge can blur the distinction between memory and reconstruction.",
-    "rows": [["The threat", "Familiar prices make totals easier to infer", "A long-term resident may reconstruct expenditure from familiar menu prices without remembering the payment amount."], ["Eligibility restriction", "New to this college", "Recruit adult newcomers who can use both cash and UPI. Screen prior campus residence, outlet familiarity and prior visits before allocation."], ["Remaining caveat", "Newcomers also learn prices", "Keep the spending window identical and record baseline familiarity. Newcomer status reduces this threat; it does not eliminate it."]],
-    "foot": "Internal validity improves through restriction, at the cost of narrower population generalizability."
+    "rows": [["The threat", "Familiar prices make totals easier to infer", "A long-term resident may reconstruct expenditure from familiar menu prices without remembering the payment amount."], ["Eligibility restriction", "New to this college", "Recruit adult newcomers who can use both cash and UPI. Screen prior campus residence, outlet familiarity and prior visits before allocation."], ["Remaining caveat", "Newcomers also learn prices", "Keep the spending window identical and record baseline familiarity. Newcomer status reduces this threat; it does not eliminate it."]]
   },
   "7": {
     "title": "PAYMENT CONDITIONS AND REWARDS",
-    "sub": "Use personal money. No discount. The same reward rule in both conditions.",
-    "rows": [["Cash condition", "Use only cash", "Use cash for eligible purchases during the seven-day experiment. Vendors record expenditure without asking participants to keep a diary."], ["UPI condition", "Use only UPI", "Use UPI for the same eligible purchases and period. Consent-based transaction records are reconciled with vendor logs."], ["Equal incentive", "Reward completion in both groups", "Participants receive discounts at campus vendors by providing their student ID. This allows vendors to link each purchase to the participant and record their expenditure."]],
-    "foot": "Define eligible transactions, emergencies and mixed-mode purchases before recruitment. Record deviations without deleting assigned participants from the primary comparison."
+    "rows": [["Use only cash", "Use only cash", "Use personal money and cash for eligible personal orders during the seven-day Food Week. No participant spending diary."], ["Use only UPI", "Use only UPI", "Use personal money and UPI for the same eligible purchases and period. Vendor records capture both payment modes."], ["Participant-ID discounts", "Participant-ID discounts", "Both groups receive 25% off personal orders with their participant ID. The discount is uncapped; budget from pilot spending. Both groups retain the same completion-reward rule."]]
   },
   "8": {
     "title": "INDEPENDENT TRANSACTION RECORDS",
-    "sub": "Partner with all campus vendors to record both payment conditions.",
-    "rows": [["Vendor logging", "A common transaction record", "Record coded participant ID, date/time, vendor, item, amount and payment mode for each purchase. Keep the capture process the same for cash and UPI."], ["Avoid memory rehearsal", "No participant spending diary", "Asking cash users to write down purchases would add encoding and rehearsal to that condition. Vendor recording keeps this task out of participants’ routines."], ["Record quality", "Reconcile and audit daily", "Check missing IDs, duplicate entries, refunds, split payments and group orders. Reconcile UPI records and vendor totals; audit cash logs against sales records where feasible."]],
-    "foot": "All-vendor coverage is a study requirement to arrange, not a partnership already secured. Off-campus cash expenditure remains harder to verify."
+    "rows": [["One item line = one record", "One item line = one record", "“2 samosas + 1 chai” creates two item lines, each with quantity. Staff tap menu items on outlet tablets."], ["An independent ground truth", "An independent ground truth", "Log participant ID, outlet, item code, quantity, menu price, amount paid after discount, timestamp and payment mode. Participants do not write spending diaries."], ["A codebook before collection", "A codebook before collection", "Use all four outlet menus to fix item names, six categories and accepted synonyms. Reconcile records daily; report spend and item count by mode descriptively."]]
   },
   "9": {
     "title": "ONE-WEEK PROCEDURE",
-    "sub": "A common exposure period and a common Tuesday recall session.",
-    "rows": [["Before the week", "Consent → baseline → match → randomize", "Train vendors, pilot record capture and issue coded participant identifiers. Explain logging and assigned-mode requirements without revealing the recall hypothesis."], ["Monday–Sunday", "Seven days of recorded spending", "Record cash and UPI purchases for one week only. Apply identical participant contact and compliance procedures to both conditions."], ["Tuesday", "Recall before records are opened", "Run the same test at the same time, without phones or transaction histories available during testing. Collect suspicion and compliance checks, then debrief."]],
-    "foot": "Tuesday is two days after the final spending day. Earlier purchases have longer recall delays, so retain transaction timestamps."
+    "rows": [["Saturday → Sunday", "Saturday → Sunday", "Saturday baseline and questionnaire; form pairs afterward. Computer allocation stays concealed until Sunday."], ["Monday–Sunday · Seven spending days", "Monday–Sunday · Seven spending days", "Record personal cash and UPI purchases at four outlets for one week. Apply the same 25% participant-ID discount in both conditions; no cap."], ["Next Monday · 6 pm recall", "Next Monday · 6 pm recall", "A 20-minute digital test, without menus or transaction histories. Lock initial totals before day-by-day recall. No make-up session."]]
   },
   "10": {
     "title": "CONFOUNDERS AND SAFEGUARDS",
-    "sub": "Protect the comparison while keeping ordinary purchases as natural as possible.",
-    "rows": [["Before assignment", "Selection and baseline differences", "Recruit both conditions from the same eligible cohort. Match on prespecified baseline measures and conceal allocation until enrollment and baseline scoring are complete."], ["During spending", "Unequal treatment and contamination", "Keep rewards, instructions, logging and contact equal. Record mode switching, shared orders, price changes and cross-group discussion. Digital histories remain a real-world feature of UPI."], ["During recall", "Experimenter and demand effects", "Standardize the test environment; mask assessors and coders to assignment where possible. Keep phones aside, avoid leading prompts and debrief after testing."]],
-    "foot": "Randomization addresses confounding in expectation. Differential attrition, noncompliance and record gaps can still threaten internal validity."
+    "rows": [["Selection and baseline differences", "Selection and baseline differences", "Optimal matching on baseline memory, spending tendency and habitual cash use, followed by a computer coin flip within pairs. Prespecify balance checks; keep baseline memory, spending tendency and habitual cash use in every analysis model."], ["Noncompliance and contamination", "Noncompliance and contamination", "Keep rewards, discounts, instructions and logging equal. Record mode switching, group payments and cross-group discussion rather than silently excluding them."], ["Demand characteristics and rehearsal", "Demand characteristics and rehearsal", "Announce baseline delayed tests; hide spendthrift–tightwad scale/cash items among decoys. Keep purchase recall unannounced. Test everyone together; record suspicion afterward and debrief."]]
   },
   "11": {
     "title": "VALIDITY AND RELIABILITY",
-    "sub": "Each quality claim needs a concrete check.",
-    "rows": [["Construct validity", "Construct validity", "We want to measure memory of actual purchases, rather than the ability to reconstruct totals from familiar prices. Recruiting newcomers reduces prior price knowledge; comparing unaided recall with vendor records checks memory against what was actually purchased."], ["Reliability", "Reliability", "Split-half reliability: divide comparable baseline-memory items into two balanced halves and correlate participants’ scores across them. This checks internal consistency within a single assessment, provided both halves measure the same memory ability."], ["Internal and external validity", "Internal and external validity", "Baseline matching, random assignment and equal procedures help isolate the effect of payment mode. However, volunteers from one college do not represent all consumers. Findings apply most directly to similar newcomers making everyday campus purchases."]],
-    "foot": "Course links: operationalization, measurement error, demand characteristics, internal validity, construct validity, reliability and external validity."
+    "rows": [["Construct validity", "Construct validity", "Use announced baseline tests, but unaided purchase recall against vendor records as the outcome. Check ceiling rates, ROCF copy performance and whether the two memory measures relate to pilot recall."], ["Reliability", "Reliability", "Two trained scorers, blinded to participant information, score ROCF using the 36-point Osterrieth/Taylor system. Report ICC and average their scores. For final item/day coding, report Cohen’s κ between blinded coders."], ["Internal and external validity", "Internal and external validity", "Matching and concealed randomization support comparability. One college and convenience recruitment limit generalizability. The modified group/written and announced baseline tests must be reported as procedural deviations."]]
   },
   "12": {
-    "title": "TUESDAY MEMORY TEST",
-    "sub": "Test details and metrics will be finalized next.",
-    "rows": [["Fixed already", "Delayed recall after the spending week", "All participants take the same Tuesday test under standardized conditions and without consulting transaction histories during the task."], ["Pending your details", "Task and scoring specification", "Finalize prompts, response format, time limit, purchase-matching rules, primary outcome and any secondary measures. Do not treat the previous deck’s formulas as decided."], ["Before collection", "Freeze the scoring and analysis rules", "Pilot clarity and difficulty; prespecify missing-record handling, zero purchases, exclusions and how noncompliance will be reported."]],
-    "foot": "No results are shown. The outcome metric and memory-test procedure are intentionally pending."
+    "title": "MONDAY RECALL TEST · 20 MINUTES",
+    "rows": [["1 · Submit and lock totals", "1 · Submit and lock totals", "First report total Food Week spending (₹) and the number of separate items purchased. Once submitted, these answers cannot be changed."], ["2 · Reconstruct seven days", "2 · Reconstruct seven days", "For each entry: outlet, specific item, whole-rupee amount paid after discount, and confidence (Sure / Guessing). Seven dated tabs cover Monday–Sunday."], ["One standardized form", "One standardized form", "Reject generic item labels; no menus, no “anything else?” prompt and no return to totals. Use an example dish absent from all menus. Every field is required."]]
   },
   "13": {
     "title": "WHAT THIS EXPERIMENT TELLS US",
-    "sub": "Estimate the effect of assignment to cash or UPI under this study’s conditions.",
-    "rows": [["If cash recall is better", "Cash may make purchases more memorable", "Better recall in the cash group would support the idea that physically handling money helps people remember purchases. However, the result alone would not explain why cash users remember more."], ["If UPI recall is better", "Digital payment may support memory", "Better recall in the UPI group would show that digital payment need not weaken purchase memory. Transaction histories and notifications are possible explanations to test separately."], ["If neither group recalls better", "No clear advantage under these conditions", "A precise result near zero would suggest little difference in this setting. A wide confidence interval would leave the question unresolved. The study could guide later tests of spending summaries or notifications in payment apps."]],
-    "foot": "A later mode × record-access experiment could use a factorial design. The present study has one manipulated factor."
+    "rows": [["If cash recall is better", "Cash may make purchases more memorable", "Better recall in the cash group would support the idea that physically handling money helps people remember purchases. However, the result alone would not explain why cash users remember more."], ["If UPI recall is better", "Digital payment may support memory", "Better recall in the UPI group would show that digital payment need not weaken purchase memory. Transaction histories and notifications are possible explanations to test separately."], ["If neither group recalls better", "No clear advantage under these conditions", "A precise result near zero would suggest little difference in this setting. A wide confidence interval would leave the question unresolved. The study could guide later tests of spending summaries or notifications in payment apps."]]
   },
   "14": {
     "title": "LIMITATIONS AND CAVEATS",
-    "sub": "The design narrows uncertainty; it cannot remove every alternative explanation.",
-    "rows": [["External validity", "Limited external validity and generalizability", "Recruiting volunteers from one college risks sampling bias and limits population validity. Findings cannot be assumed to generalize to other colleges, age groups or experienced campus residents. Baseline matching improves group comparability, not sample representativeness."], ["Ecological validity", "Threats to ecological validity", "Assigned payment modes and student-ID discounts differ from unrestricted everyday spending. Knowing purchases are recorded may also change behavior: the Hawthorne effect. These features limit how closely the study reflects normal purchasing."], ["Internal validity", "Threats to internal validity", "Noncompliance, differential attrition and incomplete vendor records can distort the comparison. Shared payments and cross-group discussion may contaminate conditions. Random assignment reduces baseline confounding but does not remove these post-assignment threats."]],
-    "foot": "Extend to other cohorts and campuses, longer spending windows and different purchase contexts. Report missingness and deviations transparently."
+    "rows": [["External validity", "Limited external validity and generalizability", "Recruiting volunteers from one college risks sampling bias and limits population validity. Findings cannot be assumed to generalize to other colleges, age groups or experienced campus residents. Baseline matching improves group comparability, not sample representativeness."], ["Ecological validity", "Threats to ecological validity", "Assigned payment modes and participant-ID discounts differ from unrestricted everyday spending. Knowing purchases are recorded may also change behavior: the Hawthorne effect. These features limit how closely the study reflects normal purchasing."], ["Internal validity", "Threats to internal validity", "Noncompliance, differential attrition and incomplete vendor records can distort the comparison. Shared payments and cross-group discussion may contaminate conditions. Random assignment reduces baseline confounding but does not remove these post-assignment threats."]]
   }
 };
 function Copy({
@@ -185,8 +160,7 @@ function ResearchSlide({
     }), /*#__PURE__*/_jsx("div", {
       className: "stacked-copy",
       children: r.map((row, i) => /*#__PURE__*/_jsx(Copy, {
-        row: row,
-        heading: ['The research gap', 'Research question', 'Hypotheses'][i]
+        row: row
       }, i))
     })]
   });
@@ -231,7 +205,7 @@ function ResearchSlide({
       }), /*#__PURE__*/_jsx("div", {
         className: "memory-panel",
         children: /*#__PURE__*/_jsx(Anatomy, {
-          kind: "recall"
+          kind: "brain"
         })
       })]
     })]
@@ -248,7 +222,7 @@ function ResearchSlide({
         children: [/*#__PURE__*/_jsx("span", {
           children: "Memory"
         }), /*#__PURE__*/_jsx("span", {
-          children: "Expenditure"
+          children: "Spending tendency"
         }), /*#__PURE__*/_jsx("span", {
           children: "Cash habits"
         })]
@@ -412,13 +386,13 @@ function ResearchSlide({
         children: "03"
       }), /*#__PURE__*/_jsxs("div", {
         children: [/*#__PURE__*/_jsx("h3", {
-          children: "Tuesday \xB7 Surprise recall"
+          children: "Monday \xB7 6 pm recall"
         }), /*#__PURE__*/_jsx("p", {
           children: r[2][2]
         })]
       }), /*#__PURE__*/_jsx("span", {
         className: "tuesday-seal",
-        children: "TUE"
+        children: "MON"
       })]
     })]
   });
@@ -469,11 +443,11 @@ function ResearchSlide({
       }), /*#__PURE__*/_jsxs("div", {
         className: "coder-pair",
         children: [/*#__PURE__*/_jsx("span", {
-          children: "Half 1"
+          children: "Blinded scorer A"
         }), /*#__PURE__*/_jsx("i", {
           children: "\u2194"
         }), /*#__PURE__*/_jsx("span", {
-          children: "Half 2"
+          children: "Blinded scorer B"
         })]
       })]
     }), /*#__PURE__*/_jsxs("div", {
@@ -488,25 +462,7 @@ function ResearchSlide({
       })]
     })]
   });
-  if (index === 12) body = /*#__PURE__*/_jsxs("div", {
-    className: "recall-composition",
-    children: [/*#__PURE__*/_jsxs("div", {
-      className: "recall-scene",
-      "data-reveal": true,
-      children: [/*#__PURE__*/_jsx(Anatomy, {
-        kind: "recall"
-      }), /*#__PURE__*/_jsxs("span", {
-        className: "pending-stamp",
-        children: ["TASK & METRICS", /*#__PURE__*/_jsx("br", {}), "TO BE FINALIZED"]
-      })]
-    }), /*#__PURE__*/_jsx("div", {
-      className: "checklist-copy",
-      children: r.map((row, i) => /*#__PURE__*/_jsx(Copy, {
-        row: row,
-        number: ['✓', '…', '→'][i]
-      }, i))
-    })]
-  });
+  if (index === 12) body = /*#__PURE__*/_jsx(RecallForm, {});
   if (index === 13) body = /*#__PURE__*/_jsxs("div", {
     className: "inference-composition",
     children: [/*#__PURE__*/_jsxs("div", {
@@ -561,6 +517,357 @@ function ResearchSlide({
     }), /*#__PURE__*/_jsx("div", {
       className: "study-body",
       children: body
+    })]
+  });
+}
+function BaselineSession() {
+  const steps = [['10 min', 'RAVLT learning', 'Five audio trials; fixed-time written recall after each.'], ['5 min', 'ROCF copy', 'Copy the figure and announce the later recall task.'], ['20 min', 'Questionnaire', 'Personality → spending tendency → sleep, with cash-use and other decoys mixed in.'], ['10 min', 'Neutral buffer', 'No memory rehearsal; preserve the 30-minute ROCF delay.'], ['5 min', 'ROCF delayed recall', 'Start 30 minutes after the copy ends; record the actual interval.'], ['2 min', 'RAVLT delayed recall', 'Record as a covariate, not part of the matching composite.']];
+  return /*#__PURE__*/_jsxs(_Fragment, {
+    children: [/*#__PURE__*/_jsx(Heading, {
+      children: "SATURDAY BASELINE \xB7 ABOUT 55 MINUTES"
+    }), /*#__PURE__*/_jsxs("div", {
+      className: "study-body baseline-session-layout",
+      children: [/*#__PURE__*/_jsx("div", {
+        className: "baseline-schedule",
+        children: steps.map(([time, title, text], i) => /*#__PURE__*/_jsxs("div", {
+          className: "baseline-session-step",
+          "data-reveal": true,
+          children: [/*#__PURE__*/_jsx("span", {
+            className: "session-time",
+            children: time
+          }), /*#__PURE__*/_jsxs("div", {
+            children: [/*#__PURE__*/_jsx("h3", {
+              children: title
+            }), /*#__PURE__*/_jsx("p", {
+              children: text
+            })]
+          })]
+        }, title))
+      }), /*#__PURE__*/_jsxs("div", {
+        className: "baseline-session-notes",
+        children: [/*#__PURE__*/_jsxs("div", {
+          "data-reveal": true,
+          children: [/*#__PURE__*/_jsx("h3", {
+            children: "Three procedural deviations"
+          }), /*#__PURE__*/_jsx("p", {
+            children: "Group, written RAVLT; announced RAVLT delayed recall; announced ROCF delayed recall. Announcing baseline recall avoids teaching participants to expect a surprise purchase test."
+          })]
+        }), /*#__PURE__*/_jsxs("div", {
+          "data-reveal": true,
+          children: [/*#__PURE__*/_jsx("h3", {
+            children: "Decoys hide the objective"
+          }), /*#__PURE__*/_jsx("p", {
+            children: "TIPI (10), sleep (3), phone habits (3), food (4), commute (2), internship expectations (3). Give decoys and the spending scale equal visual weight."
+          })]
+        }), /*#__PURE__*/_jsxs("div", {
+          "data-reveal": true,
+          children: [/*#__PURE__*/_jsx("h3", {
+            children: "Pilot before allocation"
+          }), /*#__PURE__*/_jsx("p", {
+            children: "Check ceiling rates (RAVLT \u226570/75; ROCF \u226534/36), reliability and cross-test correlation. Flag low copy scores without exclusion. If ROCF does not predict pilot purchase recall, use RAVLT alone."
+          })]
+        })]
+      })]
+    })]
+  });
+}
+function RecallForm() {
+  return /*#__PURE__*/_jsxs("div", {
+    className: "recall-form-layout",
+    children: [/*#__PURE__*/_jsxs("div", {
+      className: "locked-totals",
+      "data-reveal": true,
+      children: [/*#__PURE__*/_jsx("h3", {
+        children: "1 \xB7 Lock initial totals"
+      }), /*#__PURE__*/_jsxs("div", {
+        className: "form-example-line",
+        children: [/*#__PURE__*/_jsx("span", {
+          children: "Total spent"
+        }), /*#__PURE__*/_jsx("strong", {
+          children: "\u20B9 ______"
+        })]
+      }), /*#__PURE__*/_jsxs("div", {
+        className: "form-example-line",
+        children: [/*#__PURE__*/_jsx("span", {
+          children: "Separate items bought"
+        }), /*#__PURE__*/_jsx("strong", {
+          children: "______"
+        })]
+      }), /*#__PURE__*/_jsxs("p", {
+        children: ["Submit once.", /*#__PURE__*/_jsx("br", {}), "No return to these answers."]
+      })]
+    }), /*#__PURE__*/_jsxs("div", {
+      className: "day-form",
+      "data-reveal": true,
+      children: [/*#__PURE__*/_jsx("h3", {
+        children: "2 \xB7 Reconstruct each day"
+      }), /*#__PURE__*/_jsx("div", {
+        className: "recall-day-tabs",
+        children: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((v, i) => /*#__PURE__*/_jsx("span", {
+          className: i === 0 ? 'current-day' : '',
+          children: v
+        }, v))
+      }), /*#__PURE__*/_jsxs("div", {
+        className: "recall-entry-fields",
+        children: [/*#__PURE__*/_jsxs("div", {
+          children: [/*#__PURE__*/_jsx("h4", {
+            children: "Outlet"
+          }), /*#__PURE__*/_jsx("p", {
+            children: "Choose 1 of 4 outlets"
+          })]
+        }), /*#__PURE__*/_jsxs("div", {
+          children: [/*#__PURE__*/_jsx("h4", {
+            children: "Specific item"
+          }), /*#__PURE__*/_jsx("p", {
+            children: "Free text; generic labels rejected"
+          })]
+        }), /*#__PURE__*/_jsxs("div", {
+          children: [/*#__PURE__*/_jsx("h4", {
+            children: "Amount paid"
+          }), /*#__PURE__*/_jsx("p", {
+            children: "Whole \u20B9 after the 25% discount"
+          })]
+        }), /*#__PURE__*/_jsxs("div", {
+          children: [/*#__PURE__*/_jsx("h4", {
+            children: "Confidence"
+          }), /*#__PURE__*/_jsx("p", {
+            children: "Sure / Guessing"
+          })]
+        })]
+      }), /*#__PURE__*/_jsx("p", {
+        className: "form-required-rule",
+        children: "All four fields required. Use seven dated day tabs."
+      })]
+    }), /*#__PURE__*/_jsxs("div", {
+      className: "recall-form-rules",
+      "data-reveal": true,
+      children: [/*#__PURE__*/_jsx("h3", {
+        children: "Monday \xB7 6 pm \xB7 20-minute limit"
+      }), /*#__PURE__*/_jsx("p", {
+        children: "No menus or transaction histories. No extra recall prompt. Example dish is absent from all menus. Guesses are scored by the same matching rules."
+      })]
+    })]
+  });
+}
+function ScoringProtocol() {
+  return /*#__PURE__*/_jsxs(_Fragment, {
+    children: [/*#__PURE__*/_jsx(Heading, {
+      children: "ITEM MATCHING AND RECALL METRICS"
+    }), /*#__PURE__*/_jsxs("div", {
+      className: "study-body scoring-protocol-layout",
+      children: [/*#__PURE__*/_jsxs("div", {
+        className: "matching-rules-panel",
+        "data-reveal": true,
+        children: [/*#__PURE__*/_jsx("h3", {
+          children: "Match each entry to one logged line"
+        }), /*#__PURE__*/_jsxs("div", {
+          className: "match-rule",
+          children: [/*#__PURE__*/_jsx("b", {
+            children: "Strict \xB7 primary"
+          }), /*#__PURE__*/_jsx("p", {
+            children: "Same outlet + exact item / accepted synonym + day within \xB11."
+          })]
+        }), /*#__PURE__*/_jsxs("div", {
+          className: "match-rule",
+          children: [/*#__PURE__*/_jsx("b", {
+            children: "Lenient \xB7 check"
+          }), /*#__PURE__*/_jsx("p", {
+            children: "Same outlet + same category + day within \xB11."
+          })]
+        }), /*#__PURE__*/_jsx("p", {
+          children: "Hungarian assignment maximizes one-to-one matches. An entry cannot recover multiple logged lines."
+        }), /*#__PURE__*/_jsxs("div", {
+          className: "blinded-coding",
+          children: [/*#__PURE__*/_jsx("b", {
+            children: "Two blinded coders"
+          }), /*#__PURE__*/_jsx("p", {
+            children: "Remove mode-revealing words first. Report Cohen\u2019s \u03BA for item coding and day reading."
+          })]
+        })]
+      }), /*#__PURE__*/_jsxs("div", {
+        className: "recall-metrics-panel",
+        "data-reveal": true,
+        children: [/*#__PURE__*/_jsx("h3", {
+          children: "Recall and over-listing"
+        }), /*#__PURE__*/_jsxs("div", {
+          className: "score-definition",
+          children: [/*#__PURE__*/_jsx("b", {
+            children: "Item recall \xB7 H1"
+          }), /*#__PURE__*/_jsx("p", {
+            children: "Each logged item line: strictly recalled (1) or not (0). Estimate recall probability with the item-level model."
+          })]
+        }), /*#__PURE__*/_jsxs("div", {
+          className: "score-definition",
+          children: [/*#__PURE__*/_jsx("b", {
+            children: "Precision"
+          }), /*#__PURE__*/_jsx("p", {
+            children: "Matched entries \xF7 all entries."
+          })]
+        }), /*#__PURE__*/_jsxs("div", {
+          className: "score-definition",
+          children: [/*#__PURE__*/_jsx("b", {
+            children: "F1"
+          }), /*#__PURE__*/_jsx("p", {
+            children: "2 \xD7 precision \xD7 recall \xF7 (precision + recall)."
+          })]
+        }), /*#__PURE__*/_jsxs("div", {
+          className: "score-definition",
+          children: [/*#__PURE__*/_jsx("b", {
+            children: "Recall above chance"
+          }), /*#__PURE__*/_jsx("p", {
+            children: "Own-log recall minus a chance score from other participants\u2019 logs, drawn from both groups."
+          })]
+        })]
+      }), /*#__PURE__*/_jsxs("div", {
+        className: "additional-metrics",
+        "data-reveal": true,
+        children: [/*#__PURE__*/_jsx("h3", {
+          children: "Supporting measures"
+        }), /*#__PURE__*/_jsx("p", {
+          children: "Count error, price error / bias, exact-day accuracy; itemised-versus-initial total, confidence calibration, repeat-item and lenient recall. Detailed definitions are in presenter notes."
+        })]
+      })]
+    })]
+  });
+}
+function AnalysisProtocol() {
+  return /*#__PURE__*/_jsxs(_Fragment, {
+    children: [/*#__PURE__*/_jsx(Heading, {
+      children: "ANALYSIS AND UNEQUAL PURCHASE COUNTS"
+    }), /*#__PURE__*/_jsxs("div", {
+      className: "study-body analysis-protocol-layout",
+      children: [/*#__PURE__*/_jsxs("div", {
+        className: "analysis-method",
+        "data-reveal": true,
+        children: [/*#__PURE__*/_jsx("h3", {
+          children: "H1 \xB7 One item line, one trial"
+        }), /*#__PURE__*/_jsxs("div", {
+          className: "model-formula",
+          children: ["Payment mode + baseline memory", /*#__PURE__*/_jsx("br", {}), "+ spending tendency + habitual cash use", /*#__PURE__*/_jsx("br", {}), "+ pair and participant random intercepts"]
+        }), /*#__PURE__*/_jsx("p", {
+          children: "Logistic mixed model. Report the mode odds ratio and average difference in recall probability."
+        })]
+      }), /*#__PURE__*/_jsxs("div", {
+        className: "analysis-method",
+        "data-reveal": true,
+        children: [/*#__PURE__*/_jsx("h3", {
+          children: "Different amounts of evidence"
+        }), /*#__PURE__*/_jsx("p", {
+          children: "Use model-based shrunken person estimates for plots, rather than ranking raw percentages. Report purchase count and spending by mode descriptively."
+        }), /*#__PURE__*/_jsx("p", {
+          children: "Do not control for purchase count in H1: it occurs after randomization."
+        })]
+      }), /*#__PURE__*/_jsxs("div", {
+        className: "analysis-method",
+        "data-reveal": true,
+        children: [/*#__PURE__*/_jsx("h3", {
+          children: "H2 / H3 \xB7 Total-spend error"
+        }), /*#__PURE__*/_jsxs("div", {
+          className: "model-formula",
+          children: ["Spend error = ln[(initial total + 10)", /*#__PURE__*/_jsx("br", {}), "\xF7 (actual total + 10)]"]
+        }), /*#__PURE__*/_jsx("p", {
+          children: "H2 compares absolute spend error. H3 tests whether UPI has more negative signed error. Adjust for baseline memory, spending tendency, habitual cash use and pair."
+        })]
+      }), /*#__PURE__*/_jsxs("div", {
+        className: "analysis-method",
+        "data-reveal": true,
+        children: [/*#__PURE__*/_jsx("h3", {
+          children: "Inference and robustness"
+        }), /*#__PURE__*/_jsx("p", {
+          children: "Holm correction across H1\u2013H3. Check equal-person weighting, lenient recall and recall above chance. Count/repeat adjustment is descriptive only."
+        }), /*#__PURE__*/_jsx("p", {
+          children: "No make-up test. Use Lee bounds for absence only if their assumptions are justified."
+        })]
+      })]
+    })]
+  });
+}
+function EthicsSlide() {
+  const safeguards = [['Incomplete disclosure', 'Signed detailed consent', 'Explain tasks, purchase logging, assignment, incentives and withdrawal rights. Obtain ethics approval for withholding the exact aim and surprise-test timing; debrief afterward and allow data withdrawal.'], ['Financial privacy', 'Coded participant IDs', 'Separate identities from purchase records. Restrict access, collect only necessary data and state the retention/deletion schedule. Vendors log purchases without accessing unrelated financial information.'], ['Pressure to participate', 'Voluntary participation', 'Recruit independently of internship supervisors. Refusal, low scores or withdrawal must not affect academic standing or internship evaluation; explain reward and withdrawal terms upfront.'], ['Burden and spending pressure', 'Minimize harm', 'Explain the time commitment in the consent form. Give both groups the same incentives, require no minimum spending and make clear that these research tests are not clinical diagnoses.']];
+  return /*#__PURE__*/_jsxs(_Fragment, {
+    children: [/*#__PURE__*/_jsx(Heading, {
+      children: "ETHICAL LIMITATIONS AND SAFEGUARDS"
+    }), /*#__PURE__*/_jsx("div", {
+      className: "study-body ethics-grid",
+      children: safeguards.map(([risk, title, text]) => /*#__PURE__*/_jsxs("div", {
+        className: "ethics-row",
+        "data-reveal": true,
+        children: [/*#__PURE__*/_jsx("h3", {
+          children: risk
+        }), /*#__PURE__*/_jsx("div", {
+          children: /*#__PURE__*/_jsxs("p", {
+            children: [/*#__PURE__*/_jsxs("strong", {
+              children: [title, "."]
+            }), " ", text]
+          })
+        })]
+      }, risk))
+    })]
+  });
+}
+function ReferencesSlide() {
+  return /*#__PURE__*/_jsxs(_Fragment, {
+    children: [/*#__PURE__*/_jsx(Heading, {
+      children: "REFERENCES"
+    }), /*#__PURE__*/_jsx("div", {
+      className: "study-body bibliography",
+      "data-lenis-prevent": true,
+      children: refs.map(([authors, title, url]) => /*#__PURE__*/_jsxs("div", {
+        className: "bibliography-entry",
+        children: [/*#__PURE__*/_jsxs("span", {
+          children: [/*#__PURE__*/_jsxs("strong", {
+            children: [authors, "."]
+          }), " ", title]
+        }), url && /*#__PURE__*/_jsx("a", {
+          href: url,
+          target: "_blank",
+          rel: "noreferrer",
+          children: url.replace('https://', '')
+        })]
+      }, authors))
+    })]
+  });
+}
+function PaymentClosing({
+  active
+}) {
+  const video = useRef(null);
+  const [complete, setComplete] = useState(false);
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  useEffect(() => {
+    const el = video.current;
+    if (!el) return;
+    if (!active) {
+      el.pause();
+      el.currentTime = 0;
+      setComplete(false);
+      return;
+    }
+    if (reduced) {
+      setComplete(true);
+      return;
+    }
+    setComplete(false);
+    el.currentTime = 0;
+    el.play().catch(() => setComplete(true));
+    return () => el.pause();
+  }, [active, reduced]);
+  return /*#__PURE__*/_jsxs("div", {
+    className: `thankyou-stage published-success ${complete ? 'is-complete' : ''}`,
+    children: [/*#__PURE__*/_jsx("video", {
+      ref: video,
+      className: "success-video",
+      src: paymentSuccessVideo,
+      poster: paymentSuccessPoster,
+      muted: true,
+      playsInline: true,
+      preload: "auto",
+      onEnded: () => setComplete(true),
+      onError: () => setComplete(true),
+      "aria-label": "Google Pay success animation recreation"
+    }), /*#__PURE__*/_jsx("h1", {
+      className: "thankyou-message",
+      children: "THANK YOU."
     })]
   });
 }
@@ -626,34 +933,30 @@ function App() {
     document.title = `${String(active + 1).padStart(2, '0')} · ${titles[active]} — BRED`;
     history.replaceState(null, '', `#slide-${active + 1}`);
     const ctx = gsap.context(() => {
-      gsap.fromTo('[data-reveal]', {
-        y: reduced.current ? 0 : 32,
-        opacity: reduced.current ? 1 : 0
+      gsap.fromTo('.heading,.study-copy,.intro-purpose', {
+        y: reduced.current ? 0 : 16
       }, {
         y: 0,
-        opacity: 1,
-        duration: reduced.current ? .01 : .85,
-        stagger: .075,
+        duration: reduced.current ? .01 : .65,
+        stagger: .06,
         ease: 'power3.out',
-        clearProps: 'transform,opacity'
+        clearProps: 'transform'
       });
       if (reduced.current) return;
       const slide = sections.current[active];
       if (slide.querySelector('.anatomy-figure')) gsap.from('.anatomy-figure', {
         y: 16,
-        opacity: 0,
         duration: 1.1,
         stagger: .14,
         delay: .2,
-        clearProps: 'all'
+        clearProps: 'transform'
       });
       if (slide.querySelector('.week-days>div')) gsap.from('.week-days>div', {
         y: 18,
-        opacity: 0,
         duration: .5,
         stagger: .09,
         delay: .4,
-        clearProps: 'all'
+        clearProps: 'transform'
       });
       const animate = (selector, vars) => {
         if (slide.querySelector(selector)) gsap.to(selector, vars);
@@ -702,41 +1005,28 @@ function App() {
         ease: 'sine.inOut'
       });
       if (slide.querySelector('.wing-building')) {
-        gsap.fromTo('.wing-building i', {
-          backgroundColor: '#eeece2'
-        }, {
-          backgroundColor: '#bfd21b',
-          duration: .35,
-          stagger: .07,
-          repeat: 1,
-          yoyo: true,
-          delay: .7
-        });
         gsap.from('.mini-building', {
           y: 14,
-          opacity: 0,
           duration: .7,
           stagger: .2,
           delay: .5,
-          clearProps: 'all'
+          clearProps: 'transform'
         });
         gsap.from('.assigned-wings>div', {
           x: 25,
-          opacity: 0,
           duration: .7,
           stagger: .25,
           delay: 1,
-          clearProps: 'all'
+          clearProps: 'transform'
         });
       }
       if (slide.querySelector('.time-step')) {
         gsap.from('.time-step', {
           y: 22,
-          opacity: 0,
           duration: .8,
           stagger: .2,
           delay: .4,
-          clearProps: 'all'
+          clearProps: 'transform'
         });
         animate('.time-step .step-number', {
           y: -4,
@@ -750,11 +1040,10 @@ function App() {
       if (slide.querySelector('.purchase-slip')) gsap.from('.purchase-slip', {
         y: 25,
         rotation: -4,
-        opacity: 0,
         duration: .85,
         stagger: .12,
         delay: .4,
-        clearProps: 'all'
+        clearProps: 'transform'
       });
       if (slide.querySelector('.data-line')) {
         const path = slide.querySelector('.data-line'),
@@ -770,12 +1059,11 @@ function App() {
           clearProps: 'strokeDasharray,strokeDashoffset'
         });
         gsap.from('.plot-point', {
-          opacity: 0,
           y: 10,
           duration: .5,
           stagger: .25,
           delay: 1,
-          clearProps: 'all'
+          clearProps: 'transform'
         });
       }
       animate('.measure-code', {
@@ -875,7 +1163,7 @@ function App() {
     },
     children: /*#__PURE__*/_jsxs("article", {
       className: `paper ${cls}`,
-      children: [/*#__PURE__*/_jsxs("header", {
+      children: [i === 0 && /*#__PURE__*/_jsxs("header", {
         className: "paper-header",
         children: [/*#__PURE__*/_jsx("span", {
           children: "Behavioral research & experimental design"
@@ -892,12 +1180,14 @@ function App() {
     children: [/*#__PURE__*/_jsxs("main", {
       children: [frame(0, /*#__PURE__*/_jsxs("div", {
         className: "cover-main",
-        children: [/*#__PURE__*/_jsx("div", {
+        children: [/*#__PURE__*/_jsxs("div", {
           className: "cover-title",
           "data-reveal": true,
-          children: /*#__PURE__*/_jsxs("h1", {
+          children: [/*#__PURE__*/_jsxs("h1", {
             children: ["THE PURCHASES", /*#__PURE__*/_jsx("br", {}), "WE REMEMBER."]
-          })
+          }), /*#__PURE__*/_jsx("p", {
+            children: "UPI or Cash: Does mode of payment affect recall of spending?"
+          })]
         }), /*#__PURE__*/_jsxs("div", {
           className: "cover-art memory-art",
           "data-reveal": true,
@@ -920,27 +1210,83 @@ function App() {
             })]
           }), /*#__PURE__*/_jsx("div", {
             className: "memory-delay",
-            children: "7 spending days \u2192 Tuesday recall"
+            children: "7 spending days \u2192 Monday recall"
           }), /*#__PURE__*/_jsx("div", {
             className: "memory-question",
             children: "What did you purchase?"
           })]
         })]
-      }), 'cover revised-cover'), frame(1, /*#__PURE__*/_jsx(ResearchSlide, {
+      }), 'cover revised-cover'), frame(1, /*#__PURE__*/_jsxs(_Fragment, {
+        children: [/*#__PURE__*/_jsx(Heading, {
+          children: "BACKGROUND AND MOTIVATION"
+        }), /*#__PURE__*/_jsxs("div", {
+          className: "study-body introduction-layout",
+          children: [/*#__PURE__*/_jsxs("div", {
+            className: "introduction-copy",
+            children: [/*#__PURE__*/_jsxs("div", {
+              className: "study-copy",
+              "data-reveal": true,
+              children: [/*#__PURE__*/_jsx("h3", {
+                children: "Remembering purchases matters"
+              }), /*#__PURE__*/_jsx("p", {
+                children: "Monitoring expenditure depends partly on remembering what we bought and how much we spent. Forgotten purchases can leave us with an inaccurate picture of our spending."
+              })]
+            }), /*#__PURE__*/_jsxs("div", {
+              className: "study-copy",
+              "data-reveal": true,
+              children: [/*#__PURE__*/_jsx("h3", {
+                children: "Payment creates different memory cues"
+              }), /*#__PURE__*/_jsx("p", {
+                children: "Cash involves counting notes and receiving change. UPI provides payment confirmations and a digital transaction history. Either set of cues could help people remember purchases."
+              })]
+            }), /*#__PURE__*/_jsxs("div", {
+              className: "intro-purpose",
+              "data-reveal": true,
+              children: [/*#__PURE__*/_jsx("h3", {
+                children: "Why run this study?"
+              }), /*#__PURE__*/_jsx("p", {
+                children: "Compare delayed recall of real cash and UPI purchases against vendor records, rather than assume that one mode helps memory more."
+              })]
+            })]
+          }), /*#__PURE__*/_jsxs("div", {
+            className: "intro-payment-figures",
+            "data-reveal": true,
+            children: [/*#__PURE__*/_jsxs("div", {
+              className: "cash",
+              children: [/*#__PURE__*/_jsx(Anatomy, {
+                kind: "cash"
+              }), /*#__PURE__*/_jsx("h3", {
+                children: "Cash"
+              }), /*#__PURE__*/_jsx("p", {
+                children: "Physical payment cues"
+              })]
+            }), /*#__PURE__*/_jsxs("div", {
+              className: "upi",
+              children: [/*#__PURE__*/_jsx(Anatomy, {
+                kind: "upi"
+              }), /*#__PURE__*/_jsx("h3", {
+                children: "UPI"
+              }), /*#__PURE__*/_jsx("p", {
+                children: "Digital payment cues"
+              })]
+            })]
+          })]
+        })]
+      }), 'research-slide introduction-slide'), frame(2, /*#__PURE__*/_jsx(ResearchSlide, {
         index: 1
-      }), 'research-slide layout-1'), frame(2, /*#__PURE__*/_jsx(ResearchSlide, {
+      }), 'research-slide layout-1'), frame(3, /*#__PURE__*/_jsx(ResearchSlide, {
         index: 2
-      }), 'research-slide layout-2'), frame(3, /*#__PURE__*/_jsx(ResearchSlide, {
+      }), 'research-slide layout-2'), frame(4, /*#__PURE__*/_jsx(ResearchSlide, {
         index: 3
-      }), 'research-slide layout-3'), frame(4, /*#__PURE__*/_jsx(ResearchSlide, {
+      }), 'research-slide layout-3'), frame(5, /*#__PURE__*/_jsx(ResearchSlide, {
         index: 4
-      }), 'research-slide layout-4'), frame(5, /*#__PURE__*/_jsx(ResearchSlide, {
+      }), 'research-slide layout-4'), frame(6, /*#__PURE__*/_jsx(BaselineSession, {}), 'research-slide protocol-baseline'), frame(7, /*#__PURE__*/_jsx(ResearchSlide, {
         index: 5
-      }), 'research-slide layout-5'), frame(6, /*#__PURE__*/_jsxs(_Fragment, {
+      }), 'research-slide layout-5'), frame(8, /*#__PURE__*/_jsxs(_Fragment, {
         children: [/*#__PURE__*/_jsx("div", {
           className: "design-top",
           children: /*#__PURE__*/_jsxs(Heading, {
-            children: ["RANDOM ALLOCATION", /*#__PURE__*/_jsx("br", {}), "WITHIN MATCHED PAIRS."]
+            children: ["MATCHED-PAIR", /*#__PURE__*/_jsx("br", {}), "ALLOCATION."]
           })
         }), /*#__PURE__*/_jsxs("div", {
           className: "sampling-method",
@@ -948,7 +1294,7 @@ function App() {
           children: [/*#__PURE__*/_jsx("h3", {
             children: "Convenience recruitment + matched-pair randomization"
           }), /*#__PURE__*/_jsx("p", {
-            children: "Recruit eligible newcomers at one college. Pair participants with similar baseline memory, expenditure and cash habits; randomly assign one person in each pair to cash and the other to UPI."
+            children: "Recruit eligible newcomers at one college. Match on standardized baseline memory, spending tendency and habitual cash use using Mahalanobis distance. Use optimal pairing, then a concealed computer coin flip within each pair. Reallocate up to three times if any standardized mean difference exceeds 0.20."
           })]
         }), /*#__PURE__*/_jsxs("div", {
           className: "allocation",
@@ -1007,28 +1353,30 @@ function App() {
           }), /*#__PURE__*/_jsx("span", {
             children: "Uses both modes"
           }), /*#__PURE__*/_jsx("span", {
-            children: "Matched participant pairs"
+            children: "Check baseline balance"
           }), /*#__PURE__*/_jsx("span", {
-            children: "New to this campus"
+            children: "Computer coin flip"
           })]
         })]
-      })), frame(7, /*#__PURE__*/_jsx(ResearchSlide, {
+      })), frame(9, /*#__PURE__*/_jsx(ResearchSlide, {
         index: 7
-      }), 'research-slide layout-7'), frame(8, /*#__PURE__*/_jsx(ResearchSlide, {
+      }), 'research-slide layout-7'), frame(10, /*#__PURE__*/_jsx(ResearchSlide, {
         index: 8
-      }), 'research-slide layout-8'), frame(9, /*#__PURE__*/_jsx(ResearchSlide, {
+      }), 'research-slide layout-8'), frame(11, /*#__PURE__*/_jsx(ResearchSlide, {
         index: 9
-      }), 'research-slide layout-9'), frame(10, /*#__PURE__*/_jsx(ResearchSlide, {
+      }), 'research-slide layout-9'), frame(12, /*#__PURE__*/_jsx(ResearchSlide, {
         index: 10
-      }), 'research-slide layout-10'), frame(11, /*#__PURE__*/_jsx(ResearchSlide, {
+      }), 'research-slide layout-10'), frame(13, /*#__PURE__*/_jsx(ResearchSlide, {
         index: 11
-      }), 'research-slide layout-11'), frame(12, /*#__PURE__*/_jsx(ResearchSlide, {
+      }), 'research-slide layout-11'), frame(14, /*#__PURE__*/_jsx(ResearchSlide, {
         index: 12
-      }), 'research-slide layout-12'), frame(13, /*#__PURE__*/_jsx(ResearchSlide, {
+      }), 'research-slide layout-12'), frame(15, /*#__PURE__*/_jsx(ScoringProtocol, {}), 'research-slide protocol-scoring'), frame(16, /*#__PURE__*/_jsx(AnalysisProtocol, {}), 'research-slide protocol-analysis'), frame(17, /*#__PURE__*/_jsx(ResearchSlide, {
         index: 13
-      }), 'research-slide layout-13'), frame(14, /*#__PURE__*/_jsx(ResearchSlide, {
+      }), 'research-slide layout-13'), frame(18, /*#__PURE__*/_jsx(ResearchSlide, {
         index: 14
-      }), 'research-slide layout-14')]
+      }), 'research-slide layout-14'), frame(19, /*#__PURE__*/_jsx(EthicsSlide, {}), 'research-slide ethics-slide'), frame(20, /*#__PURE__*/_jsx(PaymentClosing, {
+        active: active === 20
+      }), 'thankyou-slide'), frame(21, /*#__PURE__*/_jsx(ReferencesSlide, {}), 'research-slide references-slide')]
     }), /*#__PURE__*/_jsx(AnimatePresence, {
       children: panel && /*#__PURE__*/_jsx(motion.div, {
         className: "modal-backdrop",
@@ -1117,11 +1465,11 @@ function App() {
               children: [/*#__PURE__*/_jsx("strong", {
                 children: "Study protocol \xB7 16 November 2026"
               }), /*#__PURE__*/_jsx("span", {
-                children: "Cash vs UPI Recall: Intern Field Experiment Design. 18 pages. Adapted to one college as requested. The revised presentation supersedes the PDF on individual matching, equal completion rewards, removal of discounts and pending recall metrics."
+                children: "The latest operationalisation supplied by the team supersedes the earlier PDF: RAVLT\u2013ROCF matching, M/S/C1 pairing, uncapped 25% discounts, Monday digital recall and item-line mixed-model analysis. C3 and C4 are removed."
               })]
             }), /*#__PURE__*/_jsx("p", {
               className: "source-credit",
-              children: "Payment objects, matching boards, vendor counter and recall worksheet generated with the Anatomy toolkit. Number animation: React Bits CountUp. Motion: GSAP, Lenis and Motion."
+              children: "Payment objects, matching boards, vendor counter and recall worksheet generated with the Anatomy toolkit. Motion: GSAP, Lenis and Motion."
             })]
           })]
         })

@@ -1,7 +1,10 @@
+import {matchingFigure} from './matching-figure.mjs';
+import {brainFigure} from './brain-figure.mjs';
+import {paymentFigure} from './payment-figures.mjs';
 // Anatomy Figures: payment objects, matching clipboards, and vendor recording counter.
 import * as k from '../../skills/anatomy/kit/iso-kit.mjs';
 import {writeFileSync} from 'node:fs';
-function figure(kind){const top={cash:55,upi:140,matching:25,vendor:140,recall:25}[kind];const P=k.fitProjection([[-120,-85,0],[120,85,0],[-120,-85,top],[120,85,top]],760,570,{pad:25,azimuth:40,elevation:34});const parts=[];let count=0;
+function figure(kind){if(kind==='matching')return matchingFigure();if(kind==='cash'||kind==='upi')return paymentFigure(kind);const top={cash:55,upi:140,matching:25,vendor:140,recall:25}[kind];const P=k.fitProjection([[-120,-85,0],[120,85,0],[-120,-85,top],[120,85,top]],760,570,{pad:25,azimuth:40,elevation:34});const parts=[];let count=0;
  const add=(svg,xyz)=>parts.push({svg,depth:k.depthOf(xyz,P),order:count++});
  const slab=(x,y,w,d,z,h,tone='hi')=>add(k.solidSvg(k.slabOf({x,y,w,d,r:Math.min(2,w/5,d/5)},z,h,P,4,.6),{tone,crease:'mid'}),[x+w/2,y+d/2,z+h/2]);
  const cyl=(x,y,r,z,h,tone='mid')=>add(k.solidSvg(k.cylinder(x,y,r,z,h,P,24),{tone}),[x,y,z+h/2]);
@@ -15,4 +18,4 @@ function figure(kind){const top={cash:55,upi:140,matching:25,vendor:140,recall:2
  }else if(kind==='vendor'){for(const x of [-100,89])for(const y of [-52,54])slab(x,y,12,12,0,52,'lo');slab(-111,-65,222,139,52,8,'mid');for(const x of [-106,100])slab(x,-58,6,6,60,70,'mid');slab(-114,-67,228,32,130,5);for(let n=0;n<14;n++)slab(-112+n*16,-68,15,34,135,1,n%2?'mid':'hi');clipboard(7,-24,88,79,60);for(let n=0;n<4;n++)ink([20+n*18,-11,64],[20+n*18,47,64],'lo');slab(-94,-30,78,52,60,4,'lo');for(let n=0;n<4;n++)paper(-90+n,-26+n,58,32,64+n,4);for(let n=0;n<3;n++)cyl(-80+n*20,42,7,60,2+n,'hi');slab(-25,-45,30,32,60,6,'mid');slab(-23,-43,26,19,66,2,'lo');for(let r=0;r<2;r++)for(let c=0;c<3;c++)slab(-20+c*7,-20+r*5,4,3,66,1);for(const x of [-100,100])screw(x,61,60);
  }else{clipboard(-90,-65,180,135,8);for(let n=0;n<6;n++){cyl(-62,-30+n*14,3,12,1,'lo');ink([-49,-30+n*14,12],[60,-30+n*14,12])}slab(92,-43,4,100,8,4,'mid');slab(92,-48,4,5,8,4,'lo');}
  /* Build order follows physical supports, bodies, then surface details. */const svg=k.figureSvg({width:760,height:570,label:{cash:'Cash wallet, banknotes and coins',upi:'UPI phone and transaction record',matching:'Baseline profile clipboards in matched pairs',vendor:'Vendor counter with independent transaction ledger',recall:'Standardized recall worksheet'}[kind],body:parts.map(x=>x.svg)});console.log(`${kind}: ${count} Anatomy parts and surface details`);return svg;}
-const figures=Object.fromEntries(['cash','upi','matching','vendor','recall'].map(kind=>[kind,figure(kind)]));writeFileSync('src/research-art.js','export const researchArt = '+JSON.stringify(figures)+';\n');for(const [name,svg] of Object.entries(figures))writeFileSync(`public/anatomy-${name}.svg`,svg);
+const figures=Object.fromEntries(['cash','upi','matching','vendor','recall'].map(kind=>[kind,figure(kind)]));figures.brain=brainFigure();writeFileSync('src/research-art.js','export const researchArt = '+JSON.stringify(figures)+';\n');for(const [name,svg] of Object.entries(figures))writeFileSync(`public/anatomy-${name}.svg`,svg);

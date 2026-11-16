@@ -1,11 +1,11 @@
 # Cash vs UPI purchase recall
 
-A 15-slide, 10-minute presentation for Behavioral Research and Experiment Design. The active study uses one college.
+A 22-slide, 10-minute presentation for Behavioral Research and Experiment Design. The active study uses one college.
 
 Download and open [presentation.html](html-deck/presentation.html) in a current browser. All fonts, artwork, and scripts are embedded, so it works offline. GitHub shows the source; download the file to run it.
 
 - [Presentation source, keybinds, and build instructions](html-deck/README.md)
-- [Study design PDF](Cash%20vs%20UPI%20Recall%20Intern%20Field%20Experiment%20Design.pdf). The presentation applies the later single-college decision.
+- [Study design PDF](Cash%20vs%20UPI%20Recall%20Intern%20Field%20Experiment%20Design.pdf). This is an earlier draft. The latest operationalisation is reflected in the presentation and its presenter notes.
 - `html-deck/dist/`: ready-to-serve modular website and standalone presentation.
 - `skills/anatomy/`: vendored Anatomy skill and artwork toolkit, with its upstream license.
 - `output/`: archived Canva-era presenter guide and review image. These describe an earlier study version and are retained as project history.

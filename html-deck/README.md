@@ -1,6 +1,6 @@
 # Cash vs UPI — Intern Purchase Recall
 
-15 slides, timed to 10 minutes. Based on **Cash vs UPI Recall: Intern Field Experiment Design**, 16 November 2026, with the user's single-college scope superseding the PDF's two-college design.
+22 slides, timed to 10 minutes. Based on **Cash vs UPI Recall: Intern Field Experiment Design**, 16 November 2026, with the user's single-college scope superseding the PDF's two-college design.
 
 ## Open directly
 
@@ -33,4 +33,8 @@ For browser checks, run `npx playwright install firefox`, then `npm run check`. 
 
 ## Study scope
 
-One college; adult newcomers; voluntary convenience recruitment; baseline memory/spending matching and individual randomization within pairs. Personal money, no discount, and equal completion rewards for both payment conditions. All campus vendors must be partnered for independent cash and UPI logging across one Monday–Sunday week. Tuesday recall follows. The recall task and outcome metrics remain pending.
+One college; voluntary newcomers; matching on the sample-standardized verbal-learning/visual-recall memory composite, continuous Spendthrift–Tightwad score, and last-10-payments cash count. Mahalanobis distance and optimal nonbipartite matching form pairs; computer allocation within pairs is concealed until Sunday. The tracking-status and history-checking questions, and the tracking exact-match rule, are removed.
+
+Saturday baseline is budgeted at about 55 minutes to preserve a 30-minute ROCF delay. Spending runs Monday–Sunday. Four campus outlets log item lines and give the same uncapped 25% participant-ID discount in both conditions. The final digital recall test is the following Monday at 6 pm, lasts 20 minutes, and locks totals before day-by-day entries. Strict one-to-one item matching is primary. An item-level mixed model handles clustered records; Holm correction covers H1–H3.
+
+The deck has 22 slides, including baseline/scoring/analysis protocol slides, an ethics slide and references after the closing animation, and presenter timings total 600 seconds. Press N for the full operational definitions, scoring rules, secondary/exploratory metrics, and unresolved analysis edge cases. The team's latest supplied operationalisation supersedes the earlier PDF.
